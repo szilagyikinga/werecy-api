@@ -1,0 +1,29 @@
+version: '3'
+services:
+    werecy_api:
+        build: . # Dockerfile placement
+        ports:
+            - '5000:8080'
+        volumes:
+            - .:/home/node/app
+            - node_modules:/home/node/app/node_modules # don't share node modules
+        links:
+            - werecy_db
+        environment:
+            WERECY_DB_ADDRESS: werecy_db
+        networks:
+            - app-network
+    werecy_db:
+        image: mongo:3
+        restart: always
+        volumes:
+            - dbdata:/data/db
+        networks:
+            - app-network
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+    dbdata:
+    node_modules:

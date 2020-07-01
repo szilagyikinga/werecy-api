@@ -1,0 +1,35 @@
+{
+  "name": "werecy-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "stop": "pm2 kill",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "lint": "eslint '**/*.js' --ignore-pattern node_modules/ --fix",
+    "docker:start": "docker-compose up -d --remove-orphans",
+    "docker:stop": "docker-compose down",
+    "docker:logs:api": "docker logs -f werecy-api_werecy_api_1",
+    "docker:logs:db": "docker logs -f werecy-api_werecy_db_1",
+    "docker:sh:api": "docker container exec -it werecy-api_werecy_api_1 sh",
+    "docker:sh:db": "docker container exec -it werecy-api_werecy_db_1 sh"
+  },
+  "author": "Szilagyi Kinga <szilagyikinga42@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "geolib": "^3.3.1",
+    "mongoose": "^5.9.20",
+    "morgan": "^1.10.0",
+    "pm2": "^4.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "eslint-config-loopback": "^13.1.0"
+  }
+}

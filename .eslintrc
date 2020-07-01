@@ -1,0 +1,16 @@
+{
+  "extends": "loopback",
+  "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "object-curly-spacing": ["error", "always"]
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "impliedStrict": true
+  }
+}
