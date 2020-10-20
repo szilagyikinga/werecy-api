@@ -1,15 +1,10 @@
 const mongoose = require('mongoose');
 
-const CollectSchema = new mongoose.Schema({
-  category: {
-    type: String,
-    required: true,
-    enum: ['wetsuit', 'ecigarette', 'hightech', 'textile', 'toner'],
-  },
-  item: {
+const CollectingSchema = new mongoose.Schema({
+  article: {
     type: String,
     required: false,
-    enum: ['camera', 'battery', 'leather', 'mod', 'smartphone', 'tablet', 'bulk', 'neoprene', 'jean'],
+    enum: ['camera', 'battery', 'leather', 'mod', 'smartphone', 'tablet', 'bulk', 'wetsuit', 'jean'],
   },
   successLabel: {
     type: String,
@@ -19,7 +14,7 @@ const CollectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  collect: {
+  collecting: {
     type: String,
     required: true,
   },
@@ -51,7 +46,7 @@ const CoordonatesSchema = new mongoose.Schema({
   },
 });
 
-const ShopSchema = new mongoose.Schema(
+const CollectingPointSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -73,13 +68,13 @@ const ShopSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    collects: {
-      type: [CollectSchema],
+    collectings: {
+      type: [CollectingSchema],
       default: undefined,
     },
   },
   { timestamps: true }
 );
-const Shop = mongoose.model('shop', ShopSchema);
+const CollectingPoint = mongoose.model('collectingPoint', CollectingPointSchema);
 
-module.exports = { Shop };
+module.exports = { CollectingPoint };

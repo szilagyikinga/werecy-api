@@ -1,15 +1,15 @@
 const geolib = require('geolib');
 
-const model = require('./shop.model');
-const shopList = require('./shop.data');
+const model = require('./collectingPoint.model');
+const list = require('./collectingPoint.data');
 
 const getMany = async (req, res) => {
   // collect category and item should be added to the query
   const { latitude, longitude } = req.query;
   try {
-    const shops = await model.Shop.find({}).lean().exec();
+    const collectingPoints = await model.CollectingPoint.find({}).lean().exec();
     res.status(200).json({
-      data: shops.map(({ coordonates, ...rest }) => ({
+      data: collectingPoints.map(({ coordonates, ...rest }) => ({
         ...rest,
         distance:
           latitude && longitude
@@ -23,15 +23,15 @@ const getMany = async (req, res) => {
   }
 };
 
-const addShops = async (req, res) => {
+const addMany = async (req, res) => {
   try {
-    await model.Shop.remove({});
-    const shops = await model.Shop.create(shopList);
-    res.status(201).json({ data: shops });
+    await model.CollectingPoint.remove({});
+    const collecingPoints = await model.CollectingPoint.create(list);
+    res.status(201).json({ data: collecingPoints });
   } catch (e) {
     console.error(e);
     res.status(400).end();
   }
 };
 
-module.exports = { getMany, addShops };
+module.exports = { getMany, addMany };
