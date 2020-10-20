@@ -1,5 +1,28 @@
 const collectingPoints = [
   {
+    distance: 33,
+    name: 'KEDGE Recycle',
+    address: {
+      street: 'Domaine de Luminy, Rue Antoine Bourdelle',
+      city: 'Marseille',
+      zip: '13009',
+    },
+    coordonates: {
+      latitude: 43.236455,
+      longitude: 5.433549,
+    },
+    image: 'home_oza7n7.png',
+    logo: 'logo_kedge_bs_1_mqnlnv.png',
+    collectings: [
+      {
+        article: 'bulk',
+        collecting: 'Un tote-bag de textile',
+        reward: 'Oups pardon ! TES récompenses',
+        successLabel: 'Ton tote-bag de textile',
+      },
+    ],
+  },
+  {
     name: 'CABESTO',
     address: {
       street: "Zone commerciale d'Auchan ZAC Le, 2 Avenue du Pastre",
