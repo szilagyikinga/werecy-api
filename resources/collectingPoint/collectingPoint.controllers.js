@@ -2,20 +2,36 @@ const geolib = require('geolib');
 
 const model = require('./collectingPoint.model');
 const list = require('./collectingPoint.data');
+const appConfig = require('../../config/appConfig');
 
 const getMany = async (req, res) => {
-  // collect category and item should be added to the query
-  const { latitude, longitude } = req.query;
+  const {
+    latitude = appConfig.defaultGeoCordinates.latitude,
+    longitude = appConfig.defaultGeoCordinates.longitude,
+    article,
+  } = req.query;
   try {
-    const collectingPoints = await model.CollectingPoint.find({}).lean().exec();
+    const query = !article ? {} : { 'collectings.article': article };
+    const collectingPoints = await model.CollectingPoint.find(query).lean().exec();
+    const formattedCollectingPoints = collectingPoints.reduce((result, { coordonates, collectings, ...rest }) => {
+      const distance = geolib.getDistance(coordonates, {
+        latitude: parseFloat(latitude),
+        longitude: parseFloat(longitude),
+      });
+      const filteredCollectings = !article
+        ? collectings
+        : collectings.filter((collecting) => collecting.article === article);
+      if (filteredCollectings.length <= 1) {
+        result.push({ ...rest, distance, collectings: filteredCollectings });
+      } else {
+        filteredCollectings.forEach((filteredCollecting) => {
+          result.push({ ...rest, distance, collectings: [filteredCollecting] });
+        });
+      }
+      return result;
+    }, []);
     res.status(200).json({
-      data: collectingPoints.map(({ coordonates, ...rest }) => ({
-        ...rest,
-        distance:
-          latitude && longitude
-            ? geolib.getDistance(coordonates, { latitude: parseFloat(latitude), longitude: parseFloat(longitude) })
-            : undefined,
-      })),
+      data: formattedCollectingPoints.sort((a, b) => (a.distance < b.distance ? -1 : 1)),
     });
   } catch (e) {
     console.error(e);
