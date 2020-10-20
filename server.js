@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const config = require('./config');
 const db = require('./utils/db');
 const collectingPointRouter = require('./resources/collectingPoint/collectingPoint.router');
+const bannerRouter = require('./resources/banner/banner.router');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.use('/api/collectingPoint', collectingPointRouter);
+app.use('/api/banner', bannerRouter);
 
 const start = async () => {
   try {

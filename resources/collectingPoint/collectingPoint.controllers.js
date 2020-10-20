@@ -1,8 +1,10 @@
-const geolib = require('geolib');
-
 const model = require('./collectingPoint.model');
+const bannerModel = require('../banner/banner.model');
 const list = require('./collectingPoint.data');
+const bannerList = require('../banner/banner.data');
 const appConfig = require('../../config/appConfig');
+const collectingPoints = require('./collectingPoint.data');
+const geolocService = require('../../services/geoloc');
 
 const getMany = async (req, res) => {
   const {
@@ -14,10 +16,7 @@ const getMany = async (req, res) => {
     const query = !article ? {} : { 'collectings.article': article };
     const collectingPoints = await model.CollectingPoint.find(query).lean().exec();
     const formattedCollectingPoints = collectingPoints.reduce((result, { coordonates, collectings, ...rest }) => {
-      const distance = geolib.getDistance(coordonates, {
-        latitude: parseFloat(latitude),
-        longitude: parseFloat(longitude),
-      });
+      const distance = geolocService.getDistance(coordonates, latitude, longitude);
       const filteredCollectings = !article
         ? collectings
         : collectings.filter((collecting) => collecting.article === article);
@@ -41,9 +40,19 @@ const getMany = async (req, res) => {
 
 const addMany = async (req, res) => {
   try {
-    await model.CollectingPoint.remove({});
-    const collecingPoints = await model.CollectingPoint.create(list);
-    res.status(201).json({ data: collecingPoints });
+    await model.CollectingPoint.deleteMany({});
+    await bannerModel.Banner.deleteMany({});
+    const collectingPoints = await model.CollectingPoint.create(list);
+    bannerList.forEach(({ collectingPoint: collectingPointName, startDate, endDate, ...rest }) => {
+      const collectingPoint = collectingPoints.find((cp) => cp.name === collectingPointName);
+      bannerModel.Banner.create({
+        startDate: new Date(startDate),
+        endDate: new Date(endDate),
+        collectingPoint: collectingPoint._id,
+        ...rest,
+      });
+    });
+    res.status(201).json({ data: collectingPoints });
   } catch (e) {
     console.error(e);
     res.status(400).end();

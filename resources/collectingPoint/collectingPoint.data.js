@@ -1,6 +1,5 @@
 const collectingPoints = [
   {
-    distance: 33,
     name: 'KEDGE Recycle',
     address: {
       street: 'Domaine de Luminy, Rue Antoine Bourdelle',
@@ -19,6 +18,12 @@ const collectingPoints = [
         collecting: 'Un tote-bag de textile',
         reward: 'Oups pardon ! TES récompenses',
         successLabel: 'Ton tote-bag de textile',
+      },
+      {
+        article: 'smartphone',
+        collecting: 'Un vieux smartphone',
+        reward: 'Oups pardon ! TES récompenses',
+        successLabel: 'Ton smartphone',
       },
     ],
   },
