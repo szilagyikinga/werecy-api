@@ -15,6 +15,7 @@ const getMany = async (req, res) => {
   try {
     const banners = await model.Banner.find({}).populate('collectingPoint').lean().exec();
     const formattedBanners = banners.reduce((result, { collectingPoint, startDate, endDate, ...rest }) => {
+      // @todo add filter to mongoose instead
       const isOngoing = dateService.isOngoing(startDate, endDate);
       if (isOngoing) {
         const { coordonates, ...collectingPointData } = collectingPoint;
