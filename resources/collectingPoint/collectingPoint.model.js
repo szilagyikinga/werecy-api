@@ -1,5 +1,31 @@
 const mongoose = require('mongoose');
 
+const RewardItemSchema = new mongoose.Schema({
+  company: {
+    type: String,
+    required: true,
+  },
+  reward: {
+    type: String,
+    required: true,
+  },
+});
+
+const RewardsSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  items: {
+    type: [RewardItemSchema],
+    default: undefined,
+  },
+  note: {
+    type: String,
+    required: false,
+  },
+});
+
 const CollectingSchema = new mongoose.Schema({
   article: {
     type: String,
@@ -13,6 +39,10 @@ const CollectingSchema = new mongoose.Schema({
   reward: {
     type: String,
     required: true,
+  },
+  rewards: {
+    type: RewardsSchema,
+    required: false,
   },
   collecting: {
     type: String,
