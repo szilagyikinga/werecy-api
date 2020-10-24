@@ -11,6 +11,10 @@ const db = {
 const isDev = env === 'development';
 
 const config = {
+  secrets: {
+    jwt: 'fmqlGJs#1%*KqmsldkfjGGMKFF',
+    jwtExp: '100d',
+  },
   env,
   isDev,
   port: 8080,
