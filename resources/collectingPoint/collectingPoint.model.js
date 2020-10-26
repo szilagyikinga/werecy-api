@@ -33,7 +33,7 @@ const CollectingSchema = new mongoose.Schema({
   },
   article: {
     type: String,
-    required: false,
+    required: true,
     enum: ['camera', 'battery', 'leather', 'mod', 'smartphone', 'tablet', 'bulk', 'wetsuit', 'jean'],
   },
   successLabel: {
