@@ -6,7 +6,31 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true,
+    },
+    name: {
+      type: String,
+      required: false,
+    },
+    firstName: {
+      type: String,
+      required: false,
+    },
+    lastName: {
+      type: String,
+      required: false,
+    },
+    locale: {
+      type: String,
+      required: false,
+    },
+    picture: {
+      type: String,
+      required: false,
+    },
+    origin: {
+      type: String,
+      required: true,
+      enum: ['facebook', 'google'],
     },
   },
   { timestamps: true }
