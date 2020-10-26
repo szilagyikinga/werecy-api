@@ -10,8 +10,8 @@ const collectingPoints = [
       latitude: 43.236455,
       longitude: 5.433549,
     },
-    image: 'home_oza7n7.png',
-    logo: 'logo_kedge_bs_1_mqnlnv.png',
+    image: 'kedge-textile.jpg',
+    logo: 'logo_kedge.png',
     successWhen: 'Du 16 au 20 novembre',
     successWhere: 'sur le CAMPUS HALL B',
     startDate: '2020-11-16',
@@ -32,7 +32,7 @@ const collectingPoints = [
         successLabel: 'Ton tote-bag de textile',
       },
       {
-        image: 'banner-kedge_ojspha.jpg',
+        image: 'kedge-smartphone.jpg',
         article: 'smartphone',
         label: '1 smartphone',
         reward: 'Oups pardon ! TES récompenses',
@@ -130,7 +130,7 @@ const collectingPoints = [
       latitude: 43.292923,
       longitude: 5.375277,
     },
-    image: 'AZUL.png',
+    image: 'AZUL.jpg',
     logo: 'LOGO_AZUL.jpg',
     collectings: [
       {
