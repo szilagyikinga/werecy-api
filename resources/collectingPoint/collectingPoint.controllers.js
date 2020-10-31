@@ -32,8 +32,9 @@ const getMany = async (req, res) => {
       }
       return result;
     }, []);
+    const sortedCollectingPoints = formattedCollectingPoints.sort((a, b) => (a.distance < b.distance ? -1 : 1));
     res.status(200).json({
-      data: formattedCollectingPoints.sort((a, b) => (a.distance < b.distance ? -1 : 1)),
+      data: req.query.latitude ? sortedCollectingPoints : sortedCollectingPoints.map(({ distance, ...rest }) => rest),
     });
   } catch (e) {
     console.error(e);

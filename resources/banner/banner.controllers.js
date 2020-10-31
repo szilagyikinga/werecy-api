@@ -2,16 +2,11 @@ const geolib = require('geolib');
 
 const model = require('./banner.model');
 const list = require('./banner.data');
-const appConfig = require('../../config/appConfig');
 const geolocService = require('../../services/geoloc');
 const dateService = require('../../services/date');
 
 const getMany = async (req, res) => {
-  const {
-    latitude = appConfig.defaultGeoCordinates.latitude,
-    longitude = appConfig.defaultGeoCordinates.longitude,
-    article,
-  } = req.query;
+  const { latitude, longitude, article } = req.query;
   try {
     const banners = await model.Banner.find({}).populate('collectingPoint').lean().exec();
     const formattedBanners = banners.reduce((result, { collectingPoint, startDate, endDate, ...rest }) => {
@@ -19,7 +14,8 @@ const getMany = async (req, res) => {
       const isOngoing = dateService.isOngoing(startDate, endDate);
       if (isOngoing) {
         const { coordonates, ...collectingPointData } = collectingPoint;
-        const distance = geolocService.getDistance(coordonates, latitude, longitude);
+        const distance =
+          latitude && longitude ? geolocService.getDistance(coordonates, latitude, longitude) : undefined;
         result.push({ startDate, endDate, collectingPoint: { ...collectingPointData, distance }, ...rest });
       }
       return result;
