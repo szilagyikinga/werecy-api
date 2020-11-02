@@ -40,18 +40,6 @@ const CollectingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  successWhen: {
-    type: String,
-    required: false,
-  },
-  successWhere: {
-    type: String,
-    required: false,
-  },
-  shareMessage: {
-    type: String,
-    required: false,
-  },
   reward: {
     type: String,
     required: true,
@@ -63,6 +51,26 @@ const CollectingSchema = new mongoose.Schema({
   label: {
     type: String,
     required: true,
+  },
+  startDate: {
+    type: Date,
+    required: false,
+  },
+  endDate: {
+    type: Date,
+    required: false,
+  },
+  successWhen: {
+    type: String,
+    required: false,
+  },
+  successWhere: {
+    type: String,
+    required: false,
+  },
+  shareMessage: {
+    type: String,
+    required: false,
   },
 });
 
@@ -118,27 +126,15 @@ const CollectingPointSchema = new mongoose.Schema(
       type: [CollectingSchema],
       default: undefined,
     },
-    successWhen: {
-      type: String,
-      required: false,
-    },
-    successWhere: {
-      type: String,
-      required: false,
-    },
     shareMessage: {
       type: String,
       required: false,
     },
-    startDate: {
-      type: Date,
-      required: false,
-    },
-    endDate: {
-      type: Date,
-      required: false,
-    },
     isUpComing: {
+      type: Boolean,
+      required: false,
+    },
+    isTemporary: {
       type: Boolean,
       required: false,
     },
@@ -147,4 +143,4 @@ const CollectingPointSchema = new mongoose.Schema(
 );
 const CollectingPoint = mongoose.model('collectingPoint', CollectingPointSchema);
 
-module.exports = { CollectingPoint };
+module.exports = { CollectingPoint, RewardsSchema };

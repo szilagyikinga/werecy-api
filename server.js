@@ -7,6 +7,7 @@ const config = require('./config');
 const db = require('./utils/db');
 const collectingPointRouter = require('./resources/collectingPoint/collectingPoint.router');
 const bannerRouter = require('./resources/banner/banner.router');
+const collectingRouter = require('./resources/collecting/collecting.router');
 const auth = require('./utils/auth');
 
 const app = express();
@@ -21,10 +22,12 @@ app.use(morgan('dev'));
 app.post('/api/signIn', auth.signIn);
 
 // app.use('/api/collectingPoint', auth.protect, collectingPointRouter);
-// app.use('/api/banner', auth.protect, bannerRouter);
+// app.use('/api/collecting', collectingRouter);
+// app.use('/api/banner', bannerRouter);
 
 app.use('/api/collectingPoint', collectingPointRouter);
-app.use('/api/banner', bannerRouter);
+app.use('/api/collecting', auth.protect, collectingRouter);
+app.use('/api/banner', auth.protect, bannerRouter);
 
 const start = async () => {
   try {

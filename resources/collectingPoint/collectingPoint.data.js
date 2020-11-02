@@ -12,10 +12,7 @@ const collectingPoints = [
     },
     image: 'kedge-textile.jpg',
     logo: 'logo_kedge.png',
-    successWhen: 'Du 16 au 20 novembre',
-    successWhere: 'sur le CAMPUS HALL B',
-    startDate: '2020-11-16',
-    endDate: '2020-11-20',
+    isTemporary: true,
     collectings: [
       {
         article: 'bulk',
@@ -30,6 +27,10 @@ const collectingPoints = [
           note: 'Une fois ton dépôt effectué, tu recevras tes récompenses par mail.',
         },
         successLabel: 'Ton tote-bag de textile',
+        successWhere: 'sur le CAMPUS HALL B',
+        successWhen: 'Du 16 au 20 novembre',
+        startDate: '2020-10-16',
+        endDate: '2020-11-20',
       },
       {
         image: 'kedge-smartphone.jpg',
@@ -37,6 +38,10 @@ const collectingPoints = [
         label: '1 smartphone',
         reward: 'Oups pardon ! TES récompenses',
         successLabel: 'Ton smartphone',
+        successWhere: 'sur le CAMPUS HALL B',
+        successWhen: 'Du 16 au 20 novembre',
+        startDate: '2020-11-16',
+        endDate: '2020-11-20',
       },
     ],
   },

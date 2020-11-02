@@ -15,23 +15,32 @@ const getMany = async (req, res) => {
   } = req.query;
   try {
     const query = !article ? {} : { 'collectings.article': article };
-    // @todo create temporary collectingPoint model and move start and endDate to collecting
-    query.$or = [{ endDate: null }, { endDate: { $gte: dateService.startOfDay() } }];
+    query.$or = [
+      { isTemporary: { $ne: true } },
+      {
+        'collectings.endDate': { $gte: dateService.startOfDay() },
+      },
+    ];
     const collectingPoints = await model.CollectingPoint.find(query).lean().exec();
-    const formattedCollectingPoints = collectingPoints.reduce((result, { coordonates, collectings, ...rest }) => {
-      const distance = geolocService.getDistance(coordonates, latitude, longitude);
-      const filteredCollectings = !article
-        ? collectings
-        : collectings.filter((collecting) => collecting.article === article);
-      if (filteredCollectings.length <= 1) {
-        result.push({ ...rest, distance, collectings: filteredCollectings });
-      } else {
-        filteredCollectings.forEach((filteredCollecting) => {
-          result.push({ ...rest, distance, collectings: [filteredCollecting] });
+    const formattedCollectingPoints = collectingPoints.reduce(
+      (result, { isTemporary, coordonates, collectings, ...rest }) => {
+        const distance = geolocService.getDistance(coordonates, latitude, longitude);
+        const filteredCollectings = collectings.filter((collecting) => {
+          const articleFilterOK = !article || collecting.article === article;
+          const dateFilterOK = !isTemporary || collecting.endDate >= dateService.startOfDay();
+          return articleFilterOK && dateFilterOK;
         });
-      }
-      return result;
-    }, []);
+        if (filteredCollectings.length === 1) {
+          result.push({ ...rest, distance, collectings: filteredCollectings });
+        } else if (filteredCollectings.length >= 1) {
+          filteredCollectings.forEach((filteredCollecting) => {
+            result.push({ ...rest, distance, collectings: [filteredCollecting] });
+          });
+        }
+        return result;
+      },
+      []
+    );
     const sortedCollectingPoints = formattedCollectingPoints.sort((a, b) => (a.distance < b.distance ? -1 : 1));
     res.status(200).json({
       data: req.query.latitude ? sortedCollectingPoints : sortedCollectingPoints.map(({ distance, ...rest }) => rest),
@@ -46,10 +55,13 @@ const addMany = async (req, res) => {
   try {
     await model.CollectingPoint.deleteMany({});
     await bannerModel.Banner.deleteMany({});
-    const formattedList = list.map(({ startDate, endDate, ...rest }) => ({
+    const formattedList = list.map(({ collectings, ...rest }) => ({
       ...rest,
-      startDate: startDate ? new Date(startDate) : undefined,
-      endDate: endDate ? new Date(endDate) : undefined,
+      collectings: collectings.map(({ startDate, endDate, ...collectiongRest }) => ({
+        ...collectiongRest,
+        startDate: startDate ? new Date(startDate) : undefined,
+        endDate: endDate ? new Date(endDate) : undefined,
+      })),
     }));
     const collectingPoints = await model.CollectingPoint.create(formattedList);
     bannerList.forEach(({ collectingPoint: collectingPointName, startDate, endDate, ...rest }) => {

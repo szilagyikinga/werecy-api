@@ -19,7 +19,11 @@ const BannerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    linesIconColor: {
+    highlightColor: {
+      type: String,
+      required: false,
+    },
+    backgroundColor: {
       type: String,
       required: false,
     },

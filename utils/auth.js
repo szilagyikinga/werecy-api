@@ -75,14 +75,11 @@ const protect = async (req, res, next) => {
   } catch (e) {
     return res.status(401).end();
   }
-
-  // const user = await User.findById(payload.id).lean().exec();
-
-  // if (!user) {
-  //   return res.status(401).end();
-  // }
-
-  // req.user = user;
+  const user = await User.findOne({ email: payload.email }).lean().exec();
+  if (!user) {
+    return res.status(401).end();
+  }
+  req.user = user;
   next();
 };
 
