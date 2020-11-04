@@ -16,7 +16,7 @@ const CollectingSchema = new mongoose.Schema(
     state: {
       type: String,
       required: true,
-      enum: ['pending', 'dropped'],
+      enum: ['pending', 'validated'],
       default: 'pending',
     },
     article: {

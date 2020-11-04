@@ -20,11 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.post('/api/signIn', auth.signIn);
-
 // app.use('/api/collectingPoint', auth.protect, collectingPointRouter);
-// app.use('/api/collecting', collectingRouter);
-// app.use('/api/banner', bannerRouter);
-
 app.use('/api/collectingPoint', collectingPointRouter);
 app.use('/api/collecting', auth.protect, collectingRouter);
 app.use('/api/banner', auth.protect, bannerRouter);

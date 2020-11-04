@@ -21,7 +21,7 @@ const collectingPoints = [
         rewards: {
           title: 'Oups pardon ! TES récompenses',
           items: [
-            { company: 'BackMarket', reward: "15€ sur 50€ d'achat" },
+            { company: 'BackMarket', reward: "15€ sur 200€ d'achat" },
             { company: 'Pumpkin', reward: '10€ crédité sur ton compte' },
           ],
           note: 'Une fois ton dépôt effectué, tu recevras tes récompenses par mail.',

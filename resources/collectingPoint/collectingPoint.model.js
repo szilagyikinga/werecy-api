@@ -89,6 +89,7 @@ const AddressSchema = new mongoose.Schema({
   },
 });
 
+// @todo: change pour coordinates
 const CoordonatesSchema = new mongoose.Schema({
   latitude: {
     type: Number,
