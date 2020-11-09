@@ -7,8 +7,8 @@ const appConfig = require('../config/appConfig');
 
 const googleClient = new OAuth2Client(appConfig.googleApi.id);
 
-const newToken = (user) => {
-  return jwt.sign({ email: user.email, id: '1' }, config.secrets.jwt, {
+const newToken = (id) => {
+  return jwt.sign({ id: id.toString() }, config.secrets.jwt, {
     expiresIn: config.secrets.jwtExp,
   });
 };
@@ -43,20 +43,20 @@ const signIn = async (req, res) => {
   if (!token) {
     return res.status(400).send({ message: 'Missing token' });
   }
-  let user;
+  let user = {};
+  let newUser = {};
   try {
-    // @todo check if provider is the same as saved
     if (provider === 'google') {
       user = await verifyGoogleIdToken(token);
     } else if (provider === 'facebook') {
       user = await verifyFacebookToken(token);
     }
     if (!user.email) return res.status(500).end();
-    const savedUser = await User.findOne({ email: user.email }).select('email').exec();
+    const savedUser = await User.findOne({ email: user.email, provider }).exec();
     if (!savedUser) {
-      await User.create(user);
+      newUser = await User.create({ ...user, provider });
     }
-    return res.status(201).send({ token: newToken({ email: user.email }) });
+    return res.status(201).send({ token: newToken(savedUser ? savedUser._id : newUser._id) });
   } catch (e) {
     console.error(e);
     res.status(500).end();
@@ -75,7 +75,7 @@ const protect = async (req, res, next) => {
   } catch (e) {
     return res.status(401).end();
   }
-  const user = await User.findOne({ email: payload.email }).lean().exec();
+  const user = await User.findOne({ _id: payload.id }).lean().exec();
   if (!user) {
     return res.status(401).end();
   }

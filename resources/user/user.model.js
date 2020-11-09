@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
     },
     name: {
       type: String,
@@ -27,7 +26,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    origin: {
+    provider: {
       type: String,
       required: true,
       enum: ['facebook', 'google'],
