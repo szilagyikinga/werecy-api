@@ -28,9 +28,9 @@ const collectingPoints = [
         },
         successLabel: 'Ton tote-bag de textile',
         successWhere: 'sur le CAMPUS HALL B',
-        successWhen: 'Du 16 au 20 novembre',
+        successWhen: 'Du 18 au 22 janvier',
         startDate: '2020-10-16',
-        endDate: '2020-11-20',
+        endDate: '2021-01-22',
       },
       {
         image: 'kedge-smartphone.jpg',
@@ -39,9 +39,9 @@ const collectingPoints = [
         reward: 'Oups pardon ! TES récompenses',
         successLabel: 'Ton smartphone',
         successWhere: 'sur le CAMPUS HALL B',
-        successWhen: 'Du 16 au 20 novembre',
-        startDate: '2020-11-16',
-        endDate: '2020-11-20',
+        successWhen: 'Du 18 au 22 janvier',
+        startDate: '2020-10-16',
+        endDate: '2021-01-22',
       },
     ],
   },
@@ -63,7 +63,7 @@ const collectingPoints = [
       {
         article: 'wetsuit',
         label: '1 combinaison néoprène',
-        reward: "10€ pour 50€ d'achat",
+        reward: "10€ pour 80€ d'achat",
         successLabel: 'Ta combinaison néoprène',
       },
     ],
@@ -84,20 +84,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'bulk',
-        successLabel: 'Tes 2 kg de textile',
-        label: '2 kg de textiles en vrac',
+        successLabel: 'Ton tote-bag de textile',
+        label: '1 tote-bag de textile en vrac',
         reward: '10% sur toute la boutique',
       },
       {
         article: 'jean',
-        successLabel: 'Ton jean',
-        label: '1 jean',
+        successLabel: 'Tes 2 jeans',
+        label: '2 jeans',
         reward: '10% sur toute la boutique',
       },
     ],
   },
   {
     name: 'For Atao',
+    isUpComing: true,
     address: {
       street: '8 rue du chantier',
       city: 'Marseille',
@@ -112,20 +113,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'bulk',
-        successLabel: 'Tes 2 kg de textile',
-        label: '2 kg de textiles en vrac',
+        successLabel: 'Ton tote-bag de textile',
+        label: '1 tote-bag de textile en vrac',
         reward: '10% sur toute la boutique',
       },
       {
         article: 'jean',
-        successLabel: 'Ton jean',
-        label: '1 jean',
+        successLabel: 'Tes 2 jeans',
+        label: '2 jeans',
         reward: '10% sur toute la boutique',
       },
     ],
   },
   {
     name: 'Azul',
+    isUpComing: true,
     address: {
       street: '73 Rue Francis Davso',
       city: 'Marseille',
@@ -140,20 +142,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'bulk',
-        successLabel: 'Tes 2 kg de textile',
-        label: '2 kg de textiles en vrac',
+        successLabel: 'Ton tote-bag de textile',
+        label: '1 tote-bag de textile en vrac',
         reward: '10% sur toute la boutique',
       },
       {
         article: 'jean',
-        successLabel: 'Ton jean',
-        label: '1 jean',
+        successLabel: 'Tes 2 jeans',
+        label: '2 jeans',
         reward: '10% sur toute la boutique',
       },
     ],
   },
   {
     name: 'AUSSIH',
+    isUpComing: true,
     address: {
       street: '9 rue Chateaubriand',
       city: 'Marseille',
@@ -168,14 +171,14 @@ const collectingPoints = [
     collectings: [
       {
         article: 'bulk',
-        successLabel: 'Tes 2 kg de textile',
-        label: '2 kg de textiles en vrac',
+        successLabel: 'Ton tote-bag de textile',
+        label: '1 tote-bag de textile en vrac',
         reward: '10% sur toute la boutique',
       },
       {
         article: 'jean',
-        successLabel: 'Ton jean',
-        label: '1 jean',
+        successLabel: 'Tes 2 jeans',
+        label: '2 jeans',
         reward: '10% sur toute la boutique',
       },
     ],
@@ -196,21 +199,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -230,21 +233,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -264,21 +267,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -298,21 +301,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -332,21 +335,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -366,21 +369,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -400,21 +403,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -434,21 +437,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -468,21 +471,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -502,21 +505,21 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
@@ -536,24 +539,184 @@ const collectingPoints = [
     collectings: [
       {
         article: 'battery',
-        successLabel: 'Tes batteries de cigarette électronique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
         label: '4 batteries de cigarette électronique',
-        reward: '5% sur la boutique',
+        reward: '10% sur la boutique',
       },
       {
         article: 'mod',
-        successLabel: 'Ton MOD de cigarette électronique',
-        label: '1 MOD de cigarette électronique',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide",
       },
       {
         article: 'smartphone',
         successLabel: 'Ton smartphone',
         label: '1 smartphone',
-        reward: "20% sur l'achat d'un nouveau MOD",
+        reward: "20% sur l'achat d'un nouveau KIT ou liquide ",
       },
     ],
   },
+  // {
+  //   name: 'Office Dépôt Montgrand',
+  //   address: {
+  //     street: '26 rue Montgrand',
+  //     city: 'Marseille',
+  //     zip: '13006',
+  //   },
+  //   coordonates: {
+  //     latitude: 43.2911857,
+  //     longitude: 5.3625064,
+  //   },
+  //   image: 'IMAGE.jpg',
+  //   logo: 'LOGO',
+  //   collectings: [
+  //     {
+  //       article: 'Toner',
+  //       label: '5 cartouches ou 5 toners',
+  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+  //       successLabel: 'Tes 5 cartouches ou 5 toners',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Office Dépôt  Cantini',
+  //   address: {
+  //     street: '65 avenue Jules Cantini',
+  //     city: 'Marseille',
+  //     zip: '13006',
+  //   },
+  //   coordonates: {
+  //     latitude: 43.2838366,
+  //     longitude: 5.3862223,
+  //   },
+  //   image: 'IMAGE.jpg',
+  //   logo: 'LOGO',
+  //   collectings: [
+  //     {
+  //       article: 'Toner',
+  //       label: '5 cartouches ou 5 toners',
+  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+  //       successLabel: 'Tes 5 cartouches ou 5 toners',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Office Dépôt Aubagne',
+  //   address: {
+  //     street: '328, Route de la Ciotat, RD 559A, Quartier Les Vaux, Rond point Lakanal',
+  //     city: 'Aubagne',
+  //     zip: '13400',
+  //   },
+  //   coordonates: {
+  //     latitude: 43.2849592,
+  //     longitude: 5.578939,
+  //   },
+  //   image: 'IMAGE.jpg',
+  //   logo: 'LOGO',
+  //   collectings: [
+  //     {
+  //       article: 'Toner',
+  //       label: '5 cartouches ou 5 toners',
+  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+  //       successLabel: 'Tes 5 cartouches ou 5 toners',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Office Dépôt Toulon',
+  //   address: {
+  //     street: 'Avenue de l’Université',
+  //     city: 'La Valette du Var',
+  //     zip: '83160',
+  //   },
+  //   coordonates: {
+  //     latitude: 43.1377739,
+  //     longitude: 6.0072467,
+  //   },
+  //   image: 'IMAGE.jpg',
+  //   logo: 'LOGO',
+  //   collectings: [
+  //     {
+  //       article: 'Toner',
+  //       label: '5 cartouches ou 5 toners',
+  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+  //       successLabel: 'Tes 5 cartouches ou 5 toners',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Office Dépôt Avignon',
+  //   address: {
+  //     street: '19 chemin de la Cristole',
+  //     city: 'Monfavet',
+  //     zip: '84140',
+  //   },
+  //   coordonates: {
+  //     latitude: 43.9255499,
+  //     longitude: 4.8468325,
+  //   },
+  //   image: 'IMAGE.jpg',
+  //   logo: 'LOGO',
+  //   collectings: [
+  //     {
+  //       article: 'Toner',
+  //       label: '5 cartouches ou 5 toners',
+  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+  //       successLabel: 'Tes 5 cartouches ou 5 toners',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Librairie Pantagruel',
+  //   address: {
+  //     street: '44 rue Paul Codaccioni',
+  //     city: 'Marseille',
+  //     zip: '13007',
+  //   },
+  //   coordonates: {
+  //     latitude: 43.2878138,
+  //     longitude: 5.3571988,
+  //   },
+  //   image: 'IMAGE.jpg',
+  //   logo: 'LOGO',
+  //   collectings: [
+  //     {
+  //       article: 'textile',
+  //       label: '1 tote-bag de textile en vrac',
+  //       reward: "5% pour l'achat de 2 livres",
+  //       successLabel: 'Ton tote-bag de textile',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'So Smoke',
+  //   address: {
+  //     street: '68 Avenue de la Corse',
+  //     city: 'Marseille',
+  //     zip: '13007',
+  //   },
+  //   coordonates: {
+  //     latitude: 43.2889975,
+  //     longitude: 5.3602915,
+  //   },
+  //   image: 'IMAGE.jpg',
+  //   logo: 'LOGO',
+  //   collectings: [
+  //     {
+  //       article: 'battery',
+  //       label: 'Tes 4 batteries de cigarette électronique',
+  //       reward: '10% sur la boutique',
+  //       successLabel: '4 batteries de cigarette électronique',
+  //     },
+  //     {
+  //       article: 'mod',
+  //       successLabel: 'Ta cigarette électronique',
+  //       label: '1 cigarette électronique',
+  //       reward: "20% sur l'achat d'un nouveau KIT ou liquide",
+  //     },
+  //   ],
+  // },
 ];
 
 module.exports = collectingPoints;
