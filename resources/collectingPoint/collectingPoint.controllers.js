@@ -23,18 +23,18 @@ const getMany = async (req, res) => {
     ];
     const collectingPoints = await model.CollectingPoint.find(query).lean().exec();
     const formattedCollectingPoints = collectingPoints.reduce(
-      (result, { isTemporary, coordonates, collectings, ...rest }) => {
+      (result, { isUpComing, isTemporary, coordonates, collectings, ...rest }) => {
         const distance = geolocService.getDistance(coordonates, latitude, longitude);
         const filteredCollectings = collectings.filter((collecting) => {
           const articleFilterOK = !article || collecting.article === article;
           const dateFilterOK = !isTemporary || collecting.endDate >= dateService.startOfDay();
           return articleFilterOK && dateFilterOK;
         });
-        if (filteredCollectings.length === 1) {
-          result.push({ ...rest, distance, collectings: filteredCollectings });
+        if (filteredCollectings.length === 1 || isUpComing) {
+          result.push({ ...rest, distance, isUpComing, collectings: [filteredCollectings[0]] });
         } else if (filteredCollectings.length >= 1) {
           filteredCollectings.forEach((filteredCollecting) => {
-            result.push({ ...rest, distance, collectings: [filteredCollecting] });
+            result.push({ ...rest, distance, isUpComing, collectings: [filteredCollecting] });
           });
         }
         return result;
