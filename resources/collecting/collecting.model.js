@@ -22,7 +22,7 @@ const CollectingSchema = new mongoose.Schema(
     article: {
       type: String,
       required: true,
-      enum: ['camera', 'battery', 'leather', 'mod', 'smartphone', 'tablet', 'bulk', 'wetsuit', 'jean'],
+      enum: ['camera', 'battery', 'leather', 'mod', 'smartphone', 'tablet', 'bulk', 'wetsuit', 'jean', 'toner'],
     },
     reward: {
       type: String,

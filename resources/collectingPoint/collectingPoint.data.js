@@ -557,116 +557,116 @@ const collectingPoints = [
       },
     ],
   },
-  // {
-  //   name: 'Office Dépôt Montgrand',
-  //   address: {
-  //     street: '26 rue Montgrand',
-  //     city: 'Marseille',
-  //     zip: '13006',
-  //   },
-  //   coordonates: {
-  //     latitude: 43.2911857,
-  //     longitude: 5.3625064,
-  //   },
-  //   image: 'IMAGE.jpg',
-  //   logo: 'LOGO',
-  //   collectings: [
-  //     {
-  //       article: 'Toner',
-  //       label: '5 cartouches ou 5 toners',
-  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
-  //       successLabel: 'Tes 5 cartouches ou 5 toners',
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: 'Office Dépôt  Cantini',
-  //   address: {
-  //     street: '65 avenue Jules Cantini',
-  //     city: 'Marseille',
-  //     zip: '13006',
-  //   },
-  //   coordonates: {
-  //     latitude: 43.2838366,
-  //     longitude: 5.3862223,
-  //   },
-  //   image: 'IMAGE.jpg',
-  //   logo: 'LOGO',
-  //   collectings: [
-  //     {
-  //       article: 'Toner',
-  //       label: '5 cartouches ou 5 toners',
-  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
-  //       successLabel: 'Tes 5 cartouches ou 5 toners',
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: 'Office Dépôt Aubagne',
-  //   address: {
-  //     street: '328, Route de la Ciotat, RD 559A, Quartier Les Vaux, Rond point Lakanal',
-  //     city: 'Aubagne',
-  //     zip: '13400',
-  //   },
-  //   coordonates: {
-  //     latitude: 43.2849592,
-  //     longitude: 5.578939,
-  //   },
-  //   image: 'IMAGE.jpg',
-  //   logo: 'LOGO',
-  //   collectings: [
-  //     {
-  //       article: 'Toner',
-  //       label: '5 cartouches ou 5 toners',
-  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
-  //       successLabel: 'Tes 5 cartouches ou 5 toners',
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: 'Office Dépôt Toulon',
-  //   address: {
-  //     street: 'Avenue de l’Université',
-  //     city: 'La Valette du Var',
-  //     zip: '83160',
-  //   },
-  //   coordonates: {
-  //     latitude: 43.1377739,
-  //     longitude: 6.0072467,
-  //   },
-  //   image: 'IMAGE.jpg',
-  //   logo: 'LOGO',
-  //   collectings: [
-  //     {
-  //       article: 'Toner',
-  //       label: '5 cartouches ou 5 toners',
-  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
-  //       successLabel: 'Tes 5 cartouches ou 5 toners',
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: 'Office Dépôt Avignon',
-  //   address: {
-  //     street: '19 chemin de la Cristole',
-  //     city: 'Monfavet',
-  //     zip: '84140',
-  //   },
-  //   coordonates: {
-  //     latitude: 43.9255499,
-  //     longitude: 4.8468325,
-  //   },
-  //   image: 'IMAGE.jpg',
-  //   logo: 'LOGO',
-  //   collectings: [
-  //     {
-  //       article: 'Toner',
-  //       label: '5 cartouches ou 5 toners',
-  //       reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
-  //       successLabel: 'Tes 5 cartouches ou 5 toners',
-  //     },
-  //   ],
-  // },
+  {
+    name: 'Office Dépôt Montgrand',
+    address: {
+      street: '26 rue Montgrand',
+      city: 'Marseille',
+      zip: '13006',
+    },
+    coordonates: {
+      latitude: 43.2911857,
+      longitude: 5.3625064,
+    },
+    image: 'OFFICE_DEPOT_MONGRAND.jpg',
+    logo: 'LOGO_OFFICE_DEPOT.png',
+    collectings: [
+      {
+        article: 'toner',
+        label: '5 cartouches ou 5 toners',
+        reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+        successLabel: 'Tes 5 cartouches ou 5 toners',
+      },
+    ],
+  },
+  {
+    name: 'Office Dépôt Cantini',
+    address: {
+      street: '65 avenue Jules Cantini',
+      city: 'Marseille',
+      zip: '13006',
+    },
+    coordonates: {
+      latitude: 43.2838366,
+      longitude: 5.3862223,
+    },
+    image: 'OFFICE_DEPOT_MARSEILLE.jpg',
+    logo: 'LOGO_OFFICE_DEPOT.png',
+    collectings: [
+      {
+        article: 'toner',
+        label: '5 cartouches ou 5 toners',
+        reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+        successLabel: 'Tes 5 cartouches ou 5 toners',
+      },
+    ],
+  },
+  {
+    name: 'Office Dépôt Aubagne',
+    address: {
+      street: '328, Route de la Ciotat, RD 559A, Quartier Les Vaux, Rond point Lakanal',
+      city: 'Aubagne',
+      zip: '13400',
+    },
+    coordonates: {
+      latitude: 43.2849592,
+      longitude: 5.578939,
+    },
+    image: 'OFFICE_DEPOT_AUBAGNE.jpg',
+    logo: 'LOGO_OFFICE_DEPOT.png',
+    collectings: [
+      {
+        article: 'toner',
+        label: '5 cartouches ou 5 toners',
+        reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+        successLabel: 'Tes 5 cartouches ou 5 toners',
+      },
+    ],
+  },
+  {
+    name: 'Office Dépôt Toulon',
+    address: {
+      street: 'Avenue de l’Université',
+      city: 'La Valette du Var',
+      zip: '83160',
+    },
+    coordonates: {
+      latitude: 43.1377739,
+      longitude: 6.0072467,
+    },
+    image: 'OFFICE_DEPOT_TOULON.jpg',
+    logo: 'LOGO_OFFICE_DEPOT.png',
+    collectings: [
+      {
+        article: 'toner',
+        label: '5 cartouches ou 5 toners',
+        reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+        successLabel: 'Tes 5 cartouches ou 5 toners',
+      },
+    ],
+  },
+  {
+    name: 'Office Dépôt Avignon',
+    address: {
+      street: '19 chemin de la Cristole',
+      city: 'Monfavet',
+      zip: '84140',
+    },
+    coordonates: {
+      latitude: 43.9255499,
+      longitude: 4.8468325,
+    },
+    image: 'OFFICE_DEPOT_AVIGNON.jpg',
+    logo: 'LOGO_OFFICE_DEPOT.png',
+    collectings: [
+      {
+        article: 'toner',
+        label: '5 cartouches ou 5 toners',
+        reward: '2,5€ pour 5 cartouches ou 5€ pour 5 toners',
+        successLabel: 'Tes 5 cartouches ou 5 toners',
+      },
+    ],
+  },
   // {
   //   name: 'Librairie Pantagruel',
   //   address: {
