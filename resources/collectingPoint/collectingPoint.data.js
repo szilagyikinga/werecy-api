@@ -1,6 +1,6 @@
 const collectingPoints = [
   {
-    name: 'KEDGE Recycle',
+    name: 'KEDGE Business School',
     address: {
       street: 'Domaine de Luminy, Rue Antoine Bourdelle',
       city: 'Marseille',
