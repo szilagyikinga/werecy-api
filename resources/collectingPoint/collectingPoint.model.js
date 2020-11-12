@@ -139,6 +139,10 @@ const CollectingPointSchema = new mongoose.Schema(
       type: Boolean,
       required: false,
     },
+    declarativeValidation: {
+      type: Boolean,
+      required: false,
+    },
   },
   { timestamps: true }
 );

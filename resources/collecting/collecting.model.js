@@ -19,6 +19,10 @@ const CollectingSchema = new mongoose.Schema(
       enum: ['pending', 'validated'],
       default: 'pending',
     },
+    validatedAt: {
+      type: Date,
+      required: false,
+    },
     article: {
       type: String,
       required: true,
