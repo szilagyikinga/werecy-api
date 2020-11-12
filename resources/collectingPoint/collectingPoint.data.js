@@ -70,6 +70,7 @@ const collectingPoints = [
   },
   {
     name: 'Lily Paillettes',
+    declarativeValidation: true,
     address: {
       street: '83 Avenue de la Corse',
       city: 'Marseille',

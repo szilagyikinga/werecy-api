@@ -1,5 +1,6 @@
 const model = require('./collecting.model');
 const collectingPointModel = require('../collectingPoint/collectingPoint.model');
+const appConfig = require('../../config/appConfig');
 
 const getMany = async (req, res) => {
   const { state } = req.query;
@@ -9,13 +10,12 @@ const getMany = async (req, res) => {
     const collectings = await model.Collecting.find(query).populate('collectingPoint').lean().exec();
 
     res.status(200).json({
-      data: collectings.map(({ collectingPoint: { address, logo, name }, ...rest }) => ({
+      data: collectings.map(({ collectingPoint: { address, logo, name, declarativeValidation }, ...rest }) => ({
         ...rest,
-        collectingPoint: { address, logo, name },
+        collectingPoint: { address, logo, name, declarativeValidation },
       })),
     });
   } catch (e) {
-    console.log(e);
     res.status(400).end();
   }
 };
@@ -29,7 +29,7 @@ const createOne = async (req, res) => {
       return res.status(403).send({ message: 'Cannot create more collectings', error: 'TOO_MANY_PENDING' });
     }
     const collectingPoint = await collectingPointModel.CollectingPoint.findById(collectingPointId).lean().exec();
-    const { article, label, reward, reawards } = collectingPoint.collectings.find(
+    const { article, label, reward, rewards } = collectingPoint.collectings.find(
       ({ _id }) => _id.toString() === collectingId
     );
     const newCollecting = await model.Collecting.create({
@@ -38,13 +38,18 @@ const createOne = async (req, res) => {
       article,
       label,
       reward,
-      reawards,
+      rewards,
     });
 
     res.status(201).json({
       data: {
         ...newCollecting.toJSON(),
-        collectingPoint: { logo: collectingPoint.logo, name: collectingPoint.name, address: collectingPoint.address },
+        collectingPoint: {
+          logo: collectingPoint.logo,
+          name: collectingPoint.name,
+          address: collectingPoint.address,
+          declarativeValidation: collectingPoint.declarativeValidation,
+        },
       },
     });
   } catch (e) {
@@ -53,4 +58,23 @@ const createOne = async (req, res) => {
   }
 };
 
-module.exports = { createOne, getMany };
+const validateOne = async (req, res) => {
+  try {
+    const collecting = await model.Collecting.findById(req.params.id).populate('collectingPoint');
+    if (collecting.state === 'validated') {
+      return res.status(400).send({ message: 'The collecting is already validated', error: 'ALREADY_VALIDATED' });
+    }
+    if (!collecting.collectingPoint.declarativeValidation && req.body.code !== appConfig.validationCode) {
+      return res.status(403).send({ message: 'The validation code is not valid', error: 'INVALID_CODE' });
+    }
+    // @todo: use contants
+    collecting.state = 'validated';
+    collecting.validatedAt = new Date();
+    collecting.save();
+    res.status(200).json({ data: collecting });
+  } catch (error) {
+    res.status(400).end();
+  }
+};
+
+module.exports = { createOne, getMany, validateOne };

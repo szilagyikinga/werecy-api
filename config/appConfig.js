@@ -12,6 +12,7 @@ const appConfig = {
       '560438869501-bsvumt1cndc8r38vofm5dcldq15hqmhh.apps.googleusercontent.com',
     ],
   },
+  validationCode: 'fS9RpdSeGM2K9ZpdqyBCgJ3RAdtkgZ',
 };
 
 module.exports = appConfig;
