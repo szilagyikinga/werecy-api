@@ -17,12 +17,13 @@ const collectingPoints = [
       {
         article: 'bulk',
         label: '1 tote-bag de textile',
-        reward: 'Oups pardon ! TES récompenses',
+        reward: 'Récompenses by Backmarket, Pumpkin...',
         rewards: {
           title: 'Oups pardon ! TES récompenses',
           items: [
             { company: 'BackMarket', reward: "15€ sur 200€ d'achat" },
             { company: 'Pumpkin', reward: '10€ crédité sur ton compte' },
+            { company: 'Rinku', reward: '-40% sur le bureau Tokyo' },
           ],
           note: 'Une fois ton dépôt effectué, tu recevras tes récompenses par mail.',
         },
@@ -36,7 +37,16 @@ const collectingPoints = [
         image: 'kedge-smartphone.jpg',
         article: 'smartphone',
         label: '1 smartphone',
-        reward: 'Oups pardon ! TES récompenses',
+        reward: 'Récompenses by Backmarket, Pumpkin...',
+        rewards: {
+          title: 'Oups pardon ! TES récompenses',
+          items: [
+            { company: 'BackMarket', reward: "15€ sur 200€ d'achat" },
+            { company: 'Pumpkin', reward: '10€ crédité sur ton compte' },
+            { company: 'Rinku', reward: '-40% sur le bureau Tokyo ' },
+          ],
+          note: 'Une fois ton dépôt effectué, tu recevras tes récompenses par mail.',
+        },
         successLabel: 'Ton smartphone',
         successWhere: 'sur le CAMPUS HALL B',
         successWhen: 'Du 18 au 22 janvier',
@@ -81,12 +91,12 @@ const collectingPoints = [
       longitude: 5.359795,
     },
     image: 'Lily-Paillettes.jpg',
-    logo: 'LOGO_Lily-Paillettes.jpg',
+    logo: 'LOGO_Lily-Paillettes.png',
     collectings: [
       {
         article: 'bulk',
         successLabel: 'Ton tote-bag de textile',
-        label: '1 tote-bag de textile en vrac',
+        label: '1 tote-bag de textile',
         reward: '10% sur toute la boutique',
       },
       {
@@ -494,7 +504,7 @@ const collectingPoints = [
     name: 'HappeSmoke',
     address: {
       street: 'Centre Commercial Carrefour Port de Bouc Route Nationale Fos Martigues',
-      city: 'Porc-de-Bouc',
+      city: 'Port-de-Bouc',
       zip: '13110',
     },
     coordonates: {
@@ -560,6 +570,7 @@ const collectingPoints = [
   },
   {
     name: 'Office Dépôt Montgrand',
+    declarativeValidation: true,
     address: {
       street: '26 rue Montgrand',
       city: 'Marseille',
@@ -570,7 +581,7 @@ const collectingPoints = [
       longitude: 5.3625064,
     },
     image: 'OFFICE_DEPOT_MONGRAND.jpg',
-    logo: 'LOGO_OFFICE_DEPOT.png',
+    logo: 'LOGO_OFFICE_DEPOT.jpg',
     collectings: [
       {
         article: 'toner',
@@ -582,6 +593,7 @@ const collectingPoints = [
   },
   {
     name: 'Office Dépôt Cantini',
+    declarativeValidation: true,
     address: {
       street: '65 avenue Jules Cantini',
       city: 'Marseille',
@@ -592,7 +604,7 @@ const collectingPoints = [
       longitude: 5.3862223,
     },
     image: 'OFFICE_DEPOT_MARSEILLE.jpg',
-    logo: 'LOGO_OFFICE_DEPOT.png',
+    logo: 'LOGO_OFFICE_DEPOT.jpg',
     collectings: [
       {
         article: 'toner',
@@ -604,6 +616,7 @@ const collectingPoints = [
   },
   {
     name: 'Office Dépôt Aubagne',
+    declarativeValidation: true,
     address: {
       street: '328, Route de la Ciotat, RD 559A, Quartier Les Vaux, Rond point Lakanal',
       city: 'Aubagne',
@@ -614,7 +627,7 @@ const collectingPoints = [
       longitude: 5.578939,
     },
     image: 'OFFICE_DEPOT_AUBAGNE.jpg',
-    logo: 'LOGO_OFFICE_DEPOT.png',
+    logo: 'LOGO_OFFICE_DEPOT.jpg',
     collectings: [
       {
         article: 'toner',
@@ -626,6 +639,7 @@ const collectingPoints = [
   },
   {
     name: 'Office Dépôt Toulon',
+    declarativeValidation: true,
     address: {
       street: 'Avenue de l’Université',
       city: 'La Valette du Var',
@@ -636,7 +650,7 @@ const collectingPoints = [
       longitude: 6.0072467,
     },
     image: 'OFFICE_DEPOT_TOULON.jpg',
-    logo: 'LOGO_OFFICE_DEPOT.png',
+    logo: 'LOGO_OFFICE_DEPOT.jpg',
     collectings: [
       {
         article: 'toner',
@@ -648,6 +662,7 @@ const collectingPoints = [
   },
   {
     name: 'Office Dépôt Avignon',
+    declarativeValidation: true,
     address: {
       street: '19 chemin de la Cristole',
       city: 'Monfavet',
@@ -658,7 +673,7 @@ const collectingPoints = [
       longitude: 4.8468325,
     },
     image: 'OFFICE_DEPOT_AVIGNON.jpg',
-    logo: 'LOGO_OFFICE_DEPOT.png',
+    logo: 'LOGO_OFFICE_DEPOT.jpg',
     collectings: [
       {
         article: 'toner',
@@ -668,56 +683,78 @@ const collectingPoints = [
       },
     ],
   },
-  // {
-  //   name: 'Librairie Pantagruel',
-  //   address: {
-  //     street: '44 rue Paul Codaccioni',
-  //     city: 'Marseille',
-  //     zip: '13007',
-  //   },
-  //   coordonates: {
-  //     latitude: 43.2878138,
-  //     longitude: 5.3571988,
-  //   },
-  //   image: 'IMAGE.jpg',
-  //   logo: 'LOGO',
-  //   collectings: [
-  //     {
-  //       article: 'textile',
-  //       label: '1 tote-bag de textile en vrac',
-  //       reward: "5% pour l'achat de 2 livres",
-  //       successLabel: 'Ton tote-bag de textile',
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: 'So Smoke',
-  //   address: {
-  //     street: '68 Avenue de la Corse',
-  //     city: 'Marseille',
-  //     zip: '13007',
-  //   },
-  //   coordonates: {
-  //     latitude: 43.2889975,
-  //     longitude: 5.3602915,
-  //   },
-  //   image: 'IMAGE.jpg',
-  //   logo: 'LOGO',
-  //   collectings: [
-  //     {
-  //       article: 'battery',
-  //       label: 'Tes 4 batteries de cigarette électronique',
-  //       reward: '10% sur la boutique',
-  //       successLabel: '4 batteries de cigarette électronique',
-  //     },
-  //     {
-  //       article: 'mod',
-  //       successLabel: 'Ta cigarette électronique',
-  //       label: '1 cigarette électronique',
-  //       reward: "20% sur l'achat d'un nouveau KIT ou liquide",
-  //     },
-  //   ],
-  // },
+  {
+    name: 'Librairie Pantagruel',
+    address: {
+      street: '44 rue Paul Codaccioni',
+      city: 'Marseille',
+      zip: '13007',
+    },
+    coordonates: {
+      latitude: 43.2878138,
+      longitude: 5.3571988,
+    },
+    image: 'PANTAGRUEL.jpg',
+    logo: 'PANTAGRUEL_LOGO.jpg',
+    collectings: [
+      {
+        article: 'bulk',
+        label: '1 tote-bag de textile',
+        reward: "5% pour l'achat de 2 livres",
+        successLabel: 'Ton tote-bag de textile',
+      },
+    ],
+  },
+  {
+    name: 'So Smoke',
+    address: {
+      street: '68 Avenue de la Corse',
+      city: 'Marseille',
+      zip: '13007',
+    },
+    coordonates: {
+      latitude: 43.2889975,
+      longitude: 5.3602915,
+    },
+    image: 'SO_SMOKE.jpg',
+    logo: 'SO_SMOKE_LOGO.jpg',
+    collectings: [
+      {
+        article: 'battery',
+        label: '4 batteries de cigarette électronique',
+        reward: '15% sur la boutique',
+        successLabel: 'Tes 4 batteries de cigarette électronique',
+      },
+      {
+        article: 'mod',
+        successLabel: 'Ta cigarette électronique',
+        label: '1 cigarette électronique',
+        reward: '15% sur la boutique',
+      },
+    ],
+  },
+  {
+    name: 'Prink',
+    address: {
+      street: '66 Avenue de la Corse',
+      city: 'Marseille',
+      zip: '13007',
+    },
+    coordonates: {
+      latitude: 43.2889922,
+      longitude: 5.3581931,
+    },
+    image: 'PRINK.jpg',
+    logo: 'PRINK_LOGO.png',
+    collectings: [
+      {
+        article: 'toner',
+        label: '4 cartouches ou 4 toners',
+        reward: '5% sur la marque PRINK',
+        successLabel: 'Tes 4 cartouches ou 4 toners',
+      },
+    ],
+  },
 ];
 
 module.exports = collectingPoints;
