@@ -10,9 +10,9 @@ const BannerSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    collectingPoint: {
+    establishment: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'collectingPoint',
+      ref: 'establishment',
       required: true,
     },
     image: {

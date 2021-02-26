@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const collectingPointModel = require('../collectingPoint/collectingPoint.model');
 
+const STATE_PENDING = 'pending';
+const STATE_VALIDATED = 'validated';
+
 const CollectingSchema = new mongoose.Schema(
   {
     user: {
@@ -8,16 +11,16 @@ const CollectingSchema = new mongoose.Schema(
       ref: 'user',
       required: true,
     },
-    collectingPoint: {
+    establishment: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'collectingPoint',
+      ref: 'establishment',
       required: true,
     },
     state: {
       type: String,
       required: true,
-      enum: ['pending', 'validated'],
-      default: 'pending',
+      enum: [STATE_PENDING, STATE_VALIDATED],
+      default: STATE_PENDING,
     },
     validatedAt: {
       type: Date,
@@ -46,4 +49,4 @@ const CollectingSchema = new mongoose.Schema(
 
 const Collecting = mongoose.model('collecting', CollectingSchema);
 
-module.exports = { Collecting };
+module.exports = { Collecting, STATE_PENDING, STATE_VALIDATED };
