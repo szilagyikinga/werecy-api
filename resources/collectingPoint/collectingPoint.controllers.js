@@ -15,7 +15,12 @@ const getMany = (req, res) => {
     latitude = appConfig.defaultGeoCordinates.latitude,
     longitude = appConfig.defaultGeoCordinates.longitude,
     article,
+    page,
+    limit: limitParam,
   } = req.query;
+
+  const limit = parseInt(limitParam);
+  const skip = limit * parseInt(page);
 
   const query = !article ? {} : { article };
   query.$or = [
@@ -24,50 +29,38 @@ const getMany = (req, res) => {
       endDate: { $gte: dateService.startOfDay() },
     },
   ];
-  // query.location = {
-  //   $near: {
-  //     $geometry: { type: 'Point', coordinates: [longitude, latitude] },
-  //   },
-  // };
-  // const collectingPoints = await model.CollectingPoint.find(query).populate('establishment').lean().exec();
 
   model.CollectingPoint.aggregate()
     .near({
       near: [parseFloat(longitude), parseFloat(latitude)],
       // distance should be only displayed if it is based on the user's position (not default data)
-      distanceField: req.query.latitude && req.query.longitude ? 'distance' : 'hiddenDistance',
+      distanceField: req.query.latitude && req.query.longitude ? 'distance' : '_distance',
       distanceMultiplier: 6378 * 1000,
       spherical: true,
       query,
     })
+    .skip(skip)
+    .limit(limit)
     .exec(function (err, docs) {
-      if (err) res.status(400).end();
+      if (err) return res.status(400).end();
 
       model.CollectingPoint.populate(docs, { path: 'establishment' }, function (err, collectingPoints) {
         if (err) {
-          res.json(err);
+          return res.json(err);
         } else {
-          res.status(200).json({
-            data: collectingPoints,
+          model.CollectingPoint.countDocuments(query).exec(function (err, count) {
+            if (err) {
+              return res.json(err);
+            } else {
+              return res.status(200).json({
+                data: collectingPoints,
+                hasMore: count > skip + limit,
+              });
+            }
           });
         }
       });
     });
-
-  // res.status(200).json({
-  //   data: collectingPoints.map(({ location, ...rest }) => ({
-  //     distance: geolocService.getDistance(
-  //       { latitude: location.coordinates[1], longitude: location.coordinates[0] },
-  //       latitude,
-  //       longitude
-  //     ),
-  //     ...rest,
-  //   })),
-  // });
-
-  // res.status(200).json({
-  //   data: collectingPoints,
-  // });
 };
 
 const addMany = async (req, res) => {

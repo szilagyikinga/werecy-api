@@ -4,14 +4,26 @@ const appConfig = require('../../config/appConfig');
 const { Collection } = require('mongoose');
 
 const getMany = async (req, res) => {
-  const { state } = req.query;
+  const { state, page, limit: limitParam } = req.query;
+  const limit = parseInt(limitParam);
+  const skip = limit * parseInt(page);
+
   const user = req.user._id;
   try {
     const query = state ? { state, user } : { user };
-    const collectings = await model.Collecting.find(query).populate('establishment').lean().exec();
+    const collectings = await model.Collecting.find(query)
+      .skip(skip)
+      .limit(limit)
+      .sort([['createdAt', -1]])
+      .populate('establishment')
+      .lean()
+      .exec();
+
+    const count = await model.Collecting.countDocuments(query).exec();
 
     res.status(200).json({
       data: collectings,
+      hasMore: count > skip + limit,
     });
   } catch (e) {
     res.status(400).end();

@@ -1,8 +1,8 @@
 const banners = [
   {
     image: 'banner-kedge.jpg',
-    startDate: '2021-01-20',
-    endDate: '2022-01-20',
+    startDate: '2021-05-20',
+    endDate: '2022-06-20',
     establishment: 'kedge',
   },
 ];
