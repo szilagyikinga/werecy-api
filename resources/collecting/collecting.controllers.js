@@ -83,4 +83,19 @@ const validateOne = async (req, res) => {
   }
 };
 
-module.exports = { createOne, getMany, validateOne };
+const cancelOne = async (req, res) => {
+  try {
+    const collecting = await model.Collecting.findById(req.params.id).populate('establishment');
+		if (collecting.state === model.STATE_VALIDATED) {
+      return res.status(403).send({ message: 'The collecting is already validated', error: 'ALREADY_VALIDATED' });
+    }
+    collecting.state = model.STATE_CANCELED;
+    collecting.canceledAt = new Date();
+    collecting.save();
+    res.status(200).json({ data: collecting });
+  } catch (error) {
+    res.status(400).end();
+  }
+};
+
+module.exports = { createOne, cancelOne, getMany, validateOne };

@@ -3,6 +3,7 @@ const collectingPointModel = require('../collectingPoint/collectingPoint.model')
 
 const STATE_PENDING = 'pending';
 const STATE_VALIDATED = 'validated';
+const STATE_CANCELED = 'canceled';
 
 const CollectingSchema = new mongoose.Schema(
   {
@@ -19,10 +20,14 @@ const CollectingSchema = new mongoose.Schema(
     state: {
       type: String,
       required: true,
-      enum: [STATE_PENDING, STATE_VALIDATED],
+      enum: [STATE_PENDING, STATE_VALIDATED, STATE_CANCELED],
       default: STATE_PENDING,
     },
     validatedAt: {
+      type: Date,
+      required: false,
+    },
+    canceledAt: {
       type: Date,
       required: false,
     },
@@ -49,4 +54,4 @@ const CollectingSchema = new mongoose.Schema(
 
 const Collecting = mongoose.model('collecting', CollectingSchema);
 
-module.exports = { Collecting, STATE_PENDING, STATE_VALIDATED };
+module.exports = { Collecting, STATE_PENDING, STATE_VALIDATED, STATE_CANCELED };
