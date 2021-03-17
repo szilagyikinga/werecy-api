@@ -342,6 +342,7 @@ const collectingPoints = [
   {
     code: 'pantagruel',
     name: 'Librairie Pantagruel',
+		isUpComing: true,
     address: {
       street: '44 rue Paul Codaccioni',
       city: 'Marseille',
@@ -353,6 +354,22 @@ const collectingPoints = [
     },
     image: 'PANTAGRUEL.jpg',
     logo: 'PANTAGRUEL_LOGO.jpg',
+  },
+	{
+    code: 'odeur_du_temps',
+    name: "Librairie L'Odeur du Temps",
+		isUpComing: true,
+    address: {
+      street: '35 rue Pavillon',
+      city: 'Marseille',
+      zip: '13001',
+    },
+    coordinates: {
+      latitude: 43.2926707,
+      longitude: 5.3616611,
+    },
+    image: 'ODEUR_DU_TEMPS.jpg',
+    logo: 'LOGO_ODEUR_DU_TEMPS.jpg',
   },
   {
     code: 'so_smoke',

@@ -376,6 +376,13 @@ const collectingPoints = [
     reward: "5% pour l'achat de 2 livres",
     successLabel: 'Ton tote-bag de textile',
   },
+	  {
+    establishment: 'odeur_du_temps',
+    article: 'jean',
+    label: '2 jeans',
+    reward: "5% pour l'achat de 2 livres",
+    successLabel: 'Tes 2 jeans',
+  },
   {
     establishment: 'so_smoke',
     article: 'battery',
