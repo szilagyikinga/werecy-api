@@ -1,3 +1,5 @@
+const model = require('./establishment.model');
+
 const collectingPoints = [
   {
     code: 'kedge',
@@ -18,6 +20,7 @@ const collectingPoints = [
     code: 'cabesto',
     name: 'CABESTO',
     isUpComing: true,
+    types: [model.SPORT],
     address: {
       street: "Zone commerciale d'Auchan ZAC Le, 2 Avenue du Pastre",
       city: 'Aubagne',
@@ -33,6 +36,7 @@ const collectingPoints = [
   {
     code: 'lilly_p',
     name: 'Lily Paillettes',
+    types: [model.FASHON],
     declarativeValidation: true,
     address: {
       street: '83 Avenue de la Corse',
@@ -49,6 +53,7 @@ const collectingPoints = [
   {
     code: 'atao',
     name: 'For Atao',
+    types: [model.FASHON],
     isUpComing: true,
     address: {
       street: '8 rue du chantier',
@@ -65,6 +70,7 @@ const collectingPoints = [
   {
     code: 'azul',
     name: 'Azul',
+    types: [model.FASHON],
     isUpComing: true,
     address: {
       street: '73 Rue Francis Davso',
@@ -81,6 +87,7 @@ const collectingPoints = [
   {
     code: 'aussih',
     name: 'AUSSIH',
+    types: [model.FASHON],
     isUpComing: true,
     address: {
       street: '9 rue Chateaubriand',
@@ -97,6 +104,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_istres',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'Forum des Carmes, Boulevard de la République',
       city: 'Istres',
@@ -112,6 +120,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_chateauneuf',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'Avenue Emile Cotte, Centre Commercial Carrefour',
       city: 'Chateauneuf-les-Martigues',
@@ -127,6 +136,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_martigues',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'Boulevard Paul Eluard Centre Commercial AUCHAN',
       city: 'Martigues',
@@ -142,6 +152,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_uzes',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'ZAC, Pont des Charrettes',
       city: 'Uzes',
@@ -157,6 +168,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_beaucaire',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'Centre Commercial Carrefour Beaucaire Route de Nîmes - Lieu-dit Genestet',
       city: 'Beaucaire',
@@ -172,6 +184,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_marseille_bonneveine',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: '112 avenue de Hambourg, Centre Commercial Carrefour Bonneveine',
       city: 'Marseille',
@@ -187,6 +200,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_marseille_bourse',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'Centre Commercial Centre Bourse, 17 Cours Belsunce',
       city: 'Marseille',
@@ -202,6 +216,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_mirabeau',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'Centre Commercial Géant Barneoud, Avenue du Plan de Campagne',
       city: 'Les Pennes-Mirabeau',
@@ -217,6 +232,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_venelles',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: '46 Chemin de la Petite Bastide',
       city: 'Venelles',
@@ -232,6 +248,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_bouc',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'Centre Commercial Carrefour Port de Bouc Route Nationale Fos Martigues',
       city: 'Port-de-Bouc',
@@ -247,6 +264,7 @@ const collectingPoints = [
   {
     code: 'happesmoke_aubagne',
     name: 'HappeSmoke',
+    types: [model.ECIGARETTE],
     address: {
       street: 'Route de Gémenos, Centre Commercial Auchan ',
       city: 'Aubagne',
@@ -262,6 +280,7 @@ const collectingPoints = [
   {
     code: 'office_depot_montgrand',
     name: 'Office Dépôt Montgrand',
+    types: [model.OFFICE],
     declarativeValidation: true,
     address: {
       street: '26 rue Montgrand',
@@ -278,6 +297,7 @@ const collectingPoints = [
   {
     code: 'office_depot_cantini',
     name: 'Office Dépôt Cantini',
+    types: [model.OFFICE],
     declarativeValidation: true,
     address: {
       street: '65 avenue Jules Cantini',
@@ -294,6 +314,7 @@ const collectingPoints = [
   {
     code: 'office_depot_aubagne',
     name: 'Office Dépôt Aubagne',
+    types: [model.OFFICE],
     declarativeValidation: true,
     address: {
       street: '328, Route de la Ciotat, RD 559A, Quartier Les Vaux, Rond point Lakanal',
@@ -310,6 +331,7 @@ const collectingPoints = [
   {
     code: 'office_depot_toulon',
     name: 'Office Dépôt Toulon',
+    types: [model.OFFICE],
     declarativeValidation: true,
     address: {
       street: 'Avenue de l’Université',
@@ -326,6 +348,7 @@ const collectingPoints = [
   {
     code: 'office_depot_avignon',
     name: 'Office Dépôt Avignon',
+    types: [model.OFFICE],
     declarativeValidation: true,
     address: {
       street: '19 chemin de la Cristole',
@@ -342,7 +365,8 @@ const collectingPoints = [
   {
     code: 'pantagruel',
     name: 'Librairie Pantagruel',
-		isUpComing: true,
+    types: [model.BOOK],
+    isUpComing: true,
     address: {
       street: '44 rue Paul Codaccioni',
       city: 'Marseille',
@@ -355,10 +379,11 @@ const collectingPoints = [
     image: 'PANTAGRUEL.jpg',
     logo: 'PANTAGRUEL_LOGO.jpg',
   },
-	{
+  {
     code: 'odeur_du_temps',
     name: "Librairie L'Odeur du Temps",
-		isUpComing: true,
+    types: [model.BOOK],
+    isUpComing: true,
     address: {
       street: '35 rue Pavillon',
       city: 'Marseille',
@@ -374,6 +399,7 @@ const collectingPoints = [
   {
     code: 'so_smoke',
     name: 'So Smoke',
+    types: [model.ECIGARETTE],
     address: {
       street: '68 Avenue de la Corse',
       city: 'Marseille',
@@ -389,6 +415,7 @@ const collectingPoints = [
   {
     code: 'prink',
     name: 'Prink',
+    types: [model.OFFICE],
     address: {
       street: '66 Avenue de la Corse',
       city: 'Marseille',

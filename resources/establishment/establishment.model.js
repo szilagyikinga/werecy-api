@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const FASHON = 'fashon';
+const BOOK = 'book';
+const ECIGARETTE = 'ecigarette';
+const SPORT = 'sport';
+const HIGHTECH = 'hightech';
+const FOOD = 'food';
+const OFFICE = 'office';
+
 const AddressSchema = new mongoose.Schema({
   street: {
     type: String,
@@ -37,6 +45,11 @@ const EstablishmentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    types: {
+      type: [String],
+      enum: [FASHON, BOOK, ECIGARETTE, SPORT, HIGHTECH, FOOD, OFFICE],
+      required: false,
+    },
     address: {
       type: AddressSchema,
       required: true,
@@ -66,11 +79,11 @@ const EstablishmentSchema = new mongoose.Schema(
       required: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 EstablishmentSchema.index({ location: '2dsphere' });
 
 const Establishment = mongoose.model('establishment', EstablishmentSchema);
 
-module.exports = { Establishment, LocationSchema };
+module.exports = { Establishment, LocationSchema, FASHON, BOOK, ECIGARETTE, SPORT, HIGHTECH, FOOD, OFFICE };

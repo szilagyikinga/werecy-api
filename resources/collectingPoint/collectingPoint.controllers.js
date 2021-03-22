@@ -15,6 +15,7 @@ const getMany = (req, res) => {
     latitude = appConfig.defaultGeoCordinates.latitude,
     longitude = appConfig.defaultGeoCordinates.longitude,
     article,
+    types,
     page,
     limit: limitParam,
   } = req.query;
@@ -23,6 +24,9 @@ const getMany = (req, res) => {
   const skip = limit * parseInt(page);
 
   const query = !article ? {} : { article };
+  if (types && types.length > 0) {
+    query.types = { $in: types };
+  }
   query.$or = [
     { startDate: { $exists: false } },
     {
@@ -41,14 +45,14 @@ const getMany = (req, res) => {
     })
     .skip(skip)
     .limit(limit)
-    .exec(function (err, docs) {
+    .exec(function(err, docs) {
       if (err) return res.status(400).end();
 
-      model.CollectingPoint.populate(docs, { path: 'establishment' }, function (err, collectingPoints) {
+      model.CollectingPoint.populate(docs, { path: 'establishment' }, function(err, collectingPoints) {
         if (err) {
           return res.json(err);
         } else {
-          model.CollectingPoint.countDocuments(query).exec(function (err, count) {
+          model.CollectingPoint.countDocuments(query).exec(function(err, count) {
             if (err) {
               return res.json(err);
             } else {
@@ -88,6 +92,7 @@ const addMany = async (req, res) => {
         establishment: currentEstablishment._id,
         startDate: startDate ? new Date(startDate) : undefined,
         endDate: endDate ? new Date(endDate) : undefined,
+        types: currentEstablishment.types,
         location: {
           type: 'Point',
           coordinates: [currentEstablishment.location.coordinates[0], currentEstablishment.location.coordinates[1]],
@@ -108,7 +113,7 @@ const addMany = async (req, res) => {
       });
     });
 
-    res.status(201).json({ data: collectingPoints });
+    res.status(201).json({ data: estabmlisments });
   } catch (e) {
     console.error(e);
     res.status(400).end();
