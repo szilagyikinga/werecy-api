@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+const FACEBOOK = 'facebook';
+const APPLE = 'apple';
+const GOOGLE = 'google';
+
 const userSchema = new mongoose.Schema(
   {
     email: {
@@ -29,7 +33,7 @@ const userSchema = new mongoose.Schema(
     provider: {
       type: String,
       required: true,
-      enum: ['facebook', 'google'],
+      enum: [FACEBOOK, GOOGLE, APPLE],
     },
   },
   { timestamps: true }
@@ -38,3 +42,5 @@ const userSchema = new mongoose.Schema(
 const User = mongoose.model('user', userSchema);
 
 module.exports = User;
+
+module.exports = { User, FACEBOOK, APPLE, GOOGLE };

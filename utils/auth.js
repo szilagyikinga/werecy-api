@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
+const NodeRSA = require('node-rsa');
 const { OAuth2Client } = require('google-auth-library');
 const axios = require('axios');
 const config = require('../config');
-const User = require('../resources/user/user.model');
+const model = require('../resources/user/user.model');
 const appConfig = require('../config/appConfig');
 
 const googleClient = new OAuth2Client(appConfig.googleApi.id);
@@ -21,6 +22,30 @@ const verifyToken = (token) =>
     });
   });
 
+async function _getApplePublicKeys() {
+  return axios
+    .request({
+      method: 'GET',
+      url: 'https://appleid.apple.com/auth/keys',
+    })
+    .then((response) => response.data.keys);
+}
+
+const getAppleUserId = async (token) => {
+  const keys = await _getApplePublicKeys();
+  const decodedToken = jwt.decode(token, { complete: true });
+  const kid = decodedToken.header.kid;
+  const key = keys.find((k) => k.kid === kid);
+
+  const pubKey = new NodeRSA();
+  pubKey.importKey({ n: Buffer.from(key.n, 'base64'), e: Buffer.from(key.e, 'base64') }, 'components-public');
+  const userKey = pubKey.exportKey(['public']);
+
+  return jwt.verify(token, userKey, {
+    algorithms: 'RS256',
+  });
+};
+
 const verifyGoogleIdToken = async (token) => {
   const ticket = await googleClient.verifyIdToken({
     idToken: token,
@@ -38,23 +63,32 @@ const verifyFacebookToken = async (token) => {
   return { email, name, lastName, firstName, origin: 'facebook' };
 };
 
+const verifyAppleToken = async (token) => {
+  const user = await getAppleUserId(token);
+  return { email: user.email };
+};
+
 const signIn = async (req, res) => {
-  const { token, provider } = req.body;
+  const { token, provider, firstName, lastName, id } = req.body;
   if (!token) {
     return res.status(400).send({ message: 'Missing token' });
   }
   let user = {};
   let newUser = {};
   try {
-    if (provider === 'google') {
+    if (provider === model.GOOGLE) {
       user = await verifyGoogleIdToken(token);
-    } else if (provider === 'facebook') {
+    } else if (provider === model.FACEBOOK) {
       user = await verifyFacebookToken(token);
+    } else if (provider === model.APPLE) {
+      user = await verifyAppleToken(token);
+      user.firstName = firstName;
+      user.lastName = lastName;
     }
     if (!user.email) return res.status(500).end();
-    const savedUser = await User.findOne({ email: user.email, provider }).exec();
+    const savedUser = await model.User.findOne({ email: user.email, provider }).exec();
     if (!savedUser) {
-      newUser = await User.create({ ...user, provider });
+      newUser = await model.User.create({ ...user, provider });
     }
     return res.status(201).send({ token: newToken(savedUser ? savedUser._id : newUser._id) });
   } catch (e) {
@@ -75,7 +109,7 @@ const protect = async (req, res, next) => {
   } catch (e) {
     return res.status(401).end();
   }
-  const user = await User.findOne({ _id: payload.id }).lean().exec();
+  const user = await model.User.findOne({ _id: payload.id }).lean().exec();
   if (!user) {
     return res.status(401).end();
   }
