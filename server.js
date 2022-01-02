@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const config = require('./config');
 const db = require('./utils/db');
+const establishmentRouter = require('./resources/establishment/establishment.router');
 const collectingPointRouter = require('./resources/collectingPoint/collectingPoint.router');
 const bannerRouter = require('./resources/banner/banner.router');
 const collectingRouter = require('./resources/collecting/collecting.router');
@@ -23,6 +24,7 @@ app.post('/api/signIn', auth.signIn);
 app.use('/api/collectingPoint', collectingPointRouter);
 app.use('/api/collecting', auth.protect, collectingRouter);
 app.use('/api/banner', bannerRouter);
+app.use('/api/establishment', establishmentRouter);
 
 const start = async () => {
   try {
