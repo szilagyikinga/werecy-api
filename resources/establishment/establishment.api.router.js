@@ -1,8 +1,7 @@
 const express = require('express');
-const controller = require('./collectingPoint.controllers');
+const controller = require('./establishment.api.controllers');
 const router = express.Router();
 
 router.get('/', controller.getMany);
-router.get('/add', controller.addMany);
 
 module.exports = router;

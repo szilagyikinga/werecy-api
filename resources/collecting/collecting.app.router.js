@@ -1,5 +1,5 @@
 const express = require('express');
-const controller = require('./collecting.controllers');
+const controller = require('./collecting.app.controllers');
 const router = express.Router();
 
 router.get('/', controller.getMany);

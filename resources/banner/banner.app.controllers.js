@@ -1,7 +1,5 @@
-const geolib = require('geolib');
 const model = require('./banner.model');
 const collectingPointModel = require('../collectingPoint/collectingPoint.model');
-const list = require('./banner.data');
 const geolocService = require('../../services/geoloc');
 const dateService = require('../../services/date');
 

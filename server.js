@@ -5,10 +5,11 @@ const bodyParser = require('body-parser');
 
 const config = require('./config');
 const db = require('./utils/db');
-const establishmentRouter = require('./resources/establishment/establishment.router');
-const collectingPointRouter = require('./resources/collectingPoint/collectingPoint.router');
-const bannerRouter = require('./resources/banner/banner.router');
-const collectingRouter = require('./resources/collecting/collecting.router');
+const collectingPointAppRouter = require('./resources/collectingPoint/collectingPoint.app.router');
+const bannerAppRouter = require('./resources/banner/banner.app.router');
+const collectingAppRouter = require('./resources/collecting/collecting.app.router');
+
+const establishmentApiRouter = require('./resources/establishment/establishment.api.router');
 const auth = require('./utils/auth');
 
 const app = express();
@@ -20,11 +21,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
+// Routes for mobile app
 app.post('/api/signIn', auth.signIn);
-app.use('/api/collectingPoint', collectingPointRouter);
-app.use('/api/collecting', auth.protect, collectingRouter);
-app.use('/api/banner', bannerRouter);
-app.use('/api/establishment', establishmentRouter);
+app.use('/api/collectingPoint', collectingPointAppRouter);
+app.use('/api/collecting', auth.protect, collectingAppRouter);
+app.use('/api/banner', bannerAppRouter);
+
+// REST routes for admin
+app.use('/api/establishments', establishmentApiRouter);
 
 const start = async () => {
   try {

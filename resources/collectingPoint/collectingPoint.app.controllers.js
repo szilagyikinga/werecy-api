@@ -6,8 +6,6 @@ const list = require('./collectingPoint.data');
 const bannerList = require('../banner/banner.data');
 const establismentList = require('../establishment/establishment.data');
 const appConfig = require('../../config/appConfig');
-const collectingPoints = require('./collectingPoint.data');
-const geolocService = require('../../services/geoloc');
 const dateService = require('../../services/date');
 
 const getMany = (req, res) => {
@@ -45,14 +43,14 @@ const getMany = (req, res) => {
     })
     .skip(skip)
     .limit(limit)
-    .exec(function(err, docs) {
+    .exec(function (err, docs) {
       if (err) return res.status(400).end();
 
-      model.CollectingPoint.populate(docs, { path: 'establishment' }, function(err, collectingPoints) {
+      model.CollectingPoint.populate(docs, { path: 'establishment' }, function (err, collectingPoints) {
         if (err) {
           return res.json(err);
         } else {
-          model.CollectingPoint.countDocuments(query).exec(function(err, count) {
+          model.CollectingPoint.countDocuments(query).exec(function (err, count) {
             if (err) {
               return res.json(err);
             } else {
