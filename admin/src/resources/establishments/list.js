@@ -2,7 +2,7 @@ import React from 'react';
 
 // https://github.com/marmelab/react-admin/blob/master/examples/simple/src/posts/PostList.tsx
 
-import { Datagrid, DateField, List, SearchInput, TextField, FunctionField, QuickFilter } from 'react-admin';
+import { Datagrid, DateField, List, SearchInput, TextField, FunctionField } from 'react-admin';
 
 const renderAdressInList = ({ address: { street, zip, city }, ...props }) => (
   <>
@@ -16,7 +16,7 @@ const postFilter = [<SearchInput source="q" alwaysOn />];
 
 const EtablishmentList = (props) => {
   return (
-    <List {...props} filters={postFilter} sort={{ field: 'created_at', order: 'DESC' }}>
+    <List {...props} filters={postFilter} sort={{ field: 'created_at', order: 'DESC' }} bulkActionButtons={false}>
       <Datagrid optimized>
         <TextField source="name" label="Nom" />
         <DateField source="createdAt" sortByOrder="DESC" label="Créé le" locales="fr-FR" />
