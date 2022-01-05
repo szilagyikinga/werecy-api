@@ -37,6 +37,7 @@ const LocationSchema = new mongoose.Schema({
 
 const EstablishmentSchema = new mongoose.Schema(
   {
+    _id: { type: String, alias: 'id' },
     name: {
       type: String,
       required: true,
@@ -79,7 +80,12 @@ const EstablishmentSchema = new mongoose.Schema(
       required: false,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
 EstablishmentSchema.index({ location: '2dsphere' });
