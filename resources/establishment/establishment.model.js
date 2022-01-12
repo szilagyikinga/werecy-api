@@ -89,6 +89,9 @@ const EstablishmentSchema = new mongoose.Schema(
 );
 
 EstablishmentSchema.index({ location: '2dsphere' });
+// eslint-disable-next-line camelcase
+EstablishmentSchema.index({ name: 'text', code: 'text' }, { default_language: 'french' });
+
 EstablishmentSchema.virtual('userId').get(function () {
   return this._id;
 });
