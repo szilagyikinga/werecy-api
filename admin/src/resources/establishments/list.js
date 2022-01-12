@@ -2,7 +2,7 @@ import React from 'react';
 
 // https://github.com/marmelab/react-admin/blob/master/examples/simple/src/posts/PostList.tsx
 
-import { Datagrid, DateField, List, SearchInput, TextField, FunctionField } from 'react-admin';
+import { EditButton, ShowButton, Datagrid, DateField, List, SearchInput, TextField, FunctionField } from 'react-admin';
 
 const renderAdressInList = ({ address: { street, zip, city }, ...props }) => (
   <>
@@ -21,10 +21,8 @@ const EtablishmentList = (props) => {
         <TextField source="name" label="Nom" />
         <DateField source="createdAt" sortByOrder="DESC" label="Créé le" locales="fr-FR" />
         <FunctionField label="Adresse" render={renderAdressInList} />
-        {/* <PostListActionToolbar>
-          <EditButton />
-          <ShowButton />
-        </PostListActionToolbar> */}
+        <EditButton />
+        <ShowButton />
       </Datagrid>
     </List>
   );

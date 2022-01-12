@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 const FASHON = 'fashon';
 const BOOK = 'book';
@@ -37,7 +38,6 @@ const LocationSchema = new mongoose.Schema({
 
 const EstablishmentSchema = new mongoose.Schema(
   {
-    _id: { type: String, alias: 'id' },
     name: {
       type: String,
       required: true,
@@ -89,6 +89,9 @@ const EstablishmentSchema = new mongoose.Schema(
 );
 
 EstablishmentSchema.index({ location: '2dsphere' });
+EstablishmentSchema.virtual('userId').get(function () {
+  return this._id;
+});
 
 const Establishment = mongoose.model('establishment', EstablishmentSchema);
 

@@ -1,3 +1,6 @@
+const ObjectId = require('mongoose').Types.ObjectId;
+const { ObjectID } = require('mongodb');
+
 const defaultRequestToFilters = () => {
   return {};
 };
@@ -25,6 +28,42 @@ const list =
     }
   };
 
-module.exports = {
-  list,
+const get = (Model) => async (req, res, next) => {
+  try {
+    const item = await Model.findById(req.params.id).exec();
+    res.status(200).json(item);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
 };
+
+const update = (Model) => async (req, res, next) => {
+  try {
+    await Model.findByIdAndUpdate(req.params.id, req.body).exec();
+    const item = await Model.findById(req.params.id).exec();
+
+    res.status(200).json(item);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
+};
+
+const create = (Model) => async (req, res, next) => {
+  try {
+    const item = new Model(req.body, true);
+    await item.save();
+    res.status(200).json(item);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
+};
+
+module.exports = (Model) => ({
+  list: list(Model),
+  get: get(Model),
+  update: update(Model),
+  create: create(Model),
+});

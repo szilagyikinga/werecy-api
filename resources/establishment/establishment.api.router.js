@@ -1,7 +1,11 @@
 const express = require('express');
-const controller = require('./establishment.api.controllers');
 const router = express.Router();
+const { Establishment } = require('./establishment.model');
+const controller = require('../../utils/reactAdmin')(Establishment);
 
-router.get('/', controller.getMany);
+router.get('/', controller.list);
+router.post('/', controller.create);
+router.get('/:id', controller.get);
+router.put('/:id', controller.update);
 
 module.exports = router;
