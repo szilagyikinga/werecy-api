@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const ObjectId = mongoose.Types.ObjectId;
 
 const FASHON = 'fashon';
 const BOOK = 'book';
@@ -91,8 +90,7 @@ const EstablishmentSchema = new mongoose.Schema(
 EstablishmentSchema.index({ location: '2dsphere' });
 // eslint-disable-next-line camelcase
 EstablishmentSchema.index({ name: 'text', code: 'text' }, { default_language: 'french' });
-
-EstablishmentSchema.virtual('userId').get(function () {
+EstablishmentSchema.virtual('id').get(function () {
   return this._id;
 });
 

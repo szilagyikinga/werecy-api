@@ -1,17 +1,48 @@
 const ObjectId = require('mongoose').Types.ObjectId;
 const { ObjectID } = require('mongodb');
 
+const getFilters = (query) => {
+  const { id, q, filters } = query;
+  const queryFilters = {};
+
+  if (id) {
+    Object.assign(queryFilters, {
+      _id: Array.isArray(id) ? { $in: id } : id,
+    });
+  }
+
+  if (q) {
+    Object.assign(queryFilters, {
+      $text: { $search: q },
+    });
+  }
+
+  if (filters) {
+    Object.keys(filters).map((key) => {
+      const filterValue = filters[key];
+
+      Object.assign(queryFilters, {
+        [key]: Array.isArray(filterValue) ? { $in: filterValue } : filterValue,
+      });
+    });
+  }
+
+  console.log('Query filters', JSON.stringify(queryFilters, null, 2));
+  return queryFilters;
+};
+
 const list = (Model) => async (req, res, next) => {
   try {
-    const { _end, _order, _sort, _start, q } = req.query;
-    const filters = q ? { $text: { $search: q } } : {};
+    const { _end, _order, _sort, _start } = req.query;
+
+    const filters = getFilters(req.query);
     const [establishments, count] = await Promise.all([
       Model.find(filters)
         .limit(Number.parseInt(_end) - Number.parseInt(_start))
         .skip(Number.parseInt(_start))
         .sort(`${_order === 'ASC' ? '-' : '+'}${_sort}`)
         .exec(),
-      Model.count(filters),
+      Model.countDocuments(filters),
     ]);
 
     res.header('X-Total-Count', count);
@@ -32,9 +63,10 @@ const get = (Model) => async (req, res, next) => {
   }
 };
 
-const update = (Model) => async (req, res, next) => {
+const update = (Model, transformer) => async (req, res, next) => {
   try {
-    await Model.findByIdAndUpdate(req.params.id, req.body).exec();
+    const dataToUpdate = transformer ? await transformer(req.body) : req.body;
+    await Model.findByIdAndUpdate(req.params.id, dataToUpdate).exec();
     const item = await Model.findById(req.params.id).exec();
 
     res.status(200).json(item);
@@ -44,9 +76,10 @@ const update = (Model) => async (req, res, next) => {
   }
 };
 
-const create = (Model) => async (req, res, next) => {
+const create = (Model, transformer) => async (req, res, next) => {
   try {
-    const item = new Model(req.body, true);
+    const dataToCreate = transformer ? await transformer(req.body) : req.body;
+    const item = new Model(dataToCreate, true);
     await item.save();
     res.status(200).json(item);
     return next();
@@ -55,9 +88,9 @@ const create = (Model) => async (req, res, next) => {
   }
 };
 
-module.exports = (Model) => ({
+module.exports = (Model, transformer) => ({
   list: list(Model),
   get: get(Model),
-  update: update(Model),
-  create: create(Model),
+  update: update(Model, transformer),
+  create: create(Model, transformer),
 });

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const establishmentModel = require('../establishment/establishment.model');
 
 const WETSUIT = 'wetsuit';
@@ -96,7 +97,7 @@ const CollectingPointSchema = new mongoose.Schema(
       required: true,
     },
     // copy of the establishment's location for faster sorting
-		    types: {
+    types: {
       type: [String],
       enum: [
         establishmentModel.FASHON,
@@ -110,10 +111,19 @@ const CollectingPointSchema = new mongoose.Schema(
       required: false,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
 CollectingPointSchema.index({ location: '2dsphere' });
+CollectingPointSchema.virtual('id').get(function () {
+  return this._id;
+});
+
 const CollectingPoint = mongoose.model('collectingPoint', CollectingPointSchema);
 
 module.exports = {
