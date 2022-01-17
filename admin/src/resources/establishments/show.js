@@ -8,7 +8,6 @@ import {
   TabbedShowLayout,
   TextField,
   useShowController,
-  useLocale,
 } from 'react-admin';
 import { Chip } from '@material-ui/core';
 
@@ -20,7 +19,6 @@ const EtablishmentTitle = ({ record }) => {
 
 const EtablishmentShow = (props) => {
   const controllerProps = useShowController(props);
-  const locale = useLocale();
   return (
     <ShowContextProvider value={controllerProps}>
       <ShowView title={<EtablishmentTitle />}>
