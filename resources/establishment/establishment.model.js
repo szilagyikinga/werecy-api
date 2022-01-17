@@ -79,10 +79,20 @@ const EstablishmentSchema = new mongoose.Schema(
       required: false,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
 EstablishmentSchema.index({ location: '2dsphere' });
+// eslint-disable-next-line camelcase
+EstablishmentSchema.index({ name: 'text', code: 'text' }, { default_language: 'french' });
+EstablishmentSchema.virtual('id').get(function () {
+  return this._id;
+});
 
 const Establishment = mongoose.model('establishment', EstablishmentSchema);
 

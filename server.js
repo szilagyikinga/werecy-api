@@ -10,13 +10,13 @@ const bannerAppRouter = require('./resources/banner/banner.app.router');
 const collectingAppRouter = require('./resources/collecting/collecting.app.router');
 
 const establishmentApiRouter = require('./resources/establishment/establishment.api.router');
+const collectingPointApiRouter = require('./resources/collectingPoint/collectingPoint.api.router');
 const auth = require('./utils/auth');
 
 const app = express();
 
 app.disable('x-powered-by');
-
-app.use(cors());
+app.use(cors({ exposedHeaders: ['Content-Length', 'X-Total-Count'] }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
@@ -29,6 +29,7 @@ app.use('/api/banner', bannerAppRouter);
 
 // REST routes for admin
 app.use('/api/establishments', establishmentApiRouter);
+app.use('/api/collectingPoints', collectingPointApiRouter);
 
 const start = async () => {
   try {
