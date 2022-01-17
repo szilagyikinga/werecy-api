@@ -36,8 +36,15 @@ const userSchema = new mongoose.Schema(
       enum: [FACEBOOK, GOOGLE, APPLE],
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
+
+userSchema.index({ email: 'text', lastName: 'text', firstName: 'text' }, { default_language: 'french' });
 
 const User = mongoose.model('user', userSchema);
 

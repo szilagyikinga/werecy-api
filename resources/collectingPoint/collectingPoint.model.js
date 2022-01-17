@@ -120,6 +120,7 @@ const CollectingPointSchema = new mongoose.Schema(
 );
 
 CollectingPointSchema.index({ location: '2dsphere' });
+CollectingPointSchema.index({ label: 'text' }, { default_language: 'french' });
 CollectingPointSchema.virtual('id').get(function () {
   return this._id;
 });
