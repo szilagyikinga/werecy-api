@@ -13,7 +13,7 @@ const UserList = (props) => {
         <EmailField label="E-mail" source="email" />
         <TextField label="Prénom" source="firstName" />
         <TextField label="Nom" source="lastName" />
-        <DateField label="Créé le" source="createdAt" />
+        <DateField label="Créé le" source="createdAt" options={{ locale: 'fr' }} />
         <ShowButton />
       </Datagrid>
     </List>

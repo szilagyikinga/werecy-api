@@ -11,7 +11,7 @@ import {
   SimpleFormIterator,
 } from 'react-admin';
 import { Box } from '@material-ui/core';
-import articles from './article';
+import articles from './articles';
 
 const SanitizedBox = ({ fullWidth, basePath, ...props }) => <Box {...props} />;
 

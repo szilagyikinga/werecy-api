@@ -49,7 +49,12 @@ const CollectingSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
 const Collecting = mongoose.model('collecting', CollectingSchema);

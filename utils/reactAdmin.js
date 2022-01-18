@@ -2,7 +2,7 @@ const ObjectId = require('mongoose').Types.ObjectId;
 const { ObjectID } = require('mongodb');
 
 const getFilters = (query) => {
-  const { id, q, filters } = query;
+  const { id, q, ...filters } = query;
   const queryFilters = {};
 
   if (id) {
@@ -18,16 +18,17 @@ const getFilters = (query) => {
   }
 
   if (filters) {
-    Object.keys(filters).map((key) => {
-      const filterValue = filters[key];
+    Object.keys(filters)
+      .filter((key) => key[0] !== '_')
+      .map((key) => {
+        const filterValue = filters[key];
 
-      Object.assign(queryFilters, {
-        [key]: Array.isArray(filterValue) ? { $in: filterValue } : filterValue,
+        Object.assign(queryFilters, {
+          [key]: Array.isArray(filterValue) ? { $in: filterValue } : filterValue,
+        });
       });
-    });
   }
 
-  console.log('Query filters', JSON.stringify(queryFilters, null, 2));
   return queryFilters;
 };
 

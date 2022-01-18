@@ -10,9 +10,9 @@ import {
   TextField,
   useShowController,
 } from 'react-admin';
-import { Chip } from '@material-ui/core';
+import Chip from '@material-ui/core/Chip';
 
-import articles from './article';
+import articles from './articles';
 
 const CollectingPointShow = (props) => {
   const { record } = useShowController(props);
