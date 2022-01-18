@@ -19,7 +19,7 @@ const app = express();
 
 app.disable('x-powered-by');
 app.use(cors({ exposedHeaders: ['Content-Length', 'X-Total-Count'] }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '15mb' })); // Upload size
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 

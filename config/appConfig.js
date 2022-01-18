@@ -13,6 +13,12 @@ const appConfig = {
     ],
   },
   validationCode: 'good_job_tu_viens_de_ressusciter_ton_objet',
+  cloudinary: {
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: 'werecy',
+    secure: true,
+  },
 };
 
 module.exports = appConfig;

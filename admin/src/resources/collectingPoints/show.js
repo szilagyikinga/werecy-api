@@ -13,6 +13,7 @@ import {
 import Chip from '@material-ui/core/Chip';
 
 import articles from './articles';
+import { imageToUrl } from '../../utils';
 
 const CollectingPointShow = (props) => {
   const { record } = useShowController(props);
@@ -26,7 +27,11 @@ const CollectingPointShow = (props) => {
           label="Article"
           render={({ article }) => <Chip label={articles.find(({ id }) => id === article).name} />}
         />
-        <TextField label="Image" source="image" />
+        {record?.image && (
+          <a href={imageToUrl(record.image)} target="_blank">
+            <img src={imageToUrl(record.image)} style={{ maxWidth: '100%' }} />
+          </a>
+        )}
         <TextField label="Success Label" source="successLabel" />
         <TextField label="Récompense" source="reward" />
         <DateField label="Date de début" source="startDate" options={{ locale: 'fr' }} />

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   BooleanField,
+  FileField,
   FunctionField,
   ShowContextProvider,
   ShowView,
@@ -12,6 +13,7 @@ import {
 import Chip from '@material-ui/core/Chip';
 
 import types from './types';
+import { imageToUrl } from '../../utils';
 
 const EtablishmentTitle = ({ record }) => {
   return <span>{record.title}</span>;
@@ -19,6 +21,7 @@ const EtablishmentTitle = ({ record }) => {
 
 const EtablishmentShow = (props) => {
   const controllerProps = useShowController(props);
+  const { record } = controllerProps;
   return (
     <ShowContextProvider value={controllerProps}>
       <ShowView title={<EtablishmentTitle />}>
@@ -39,6 +42,17 @@ const EtablishmentShow = (props) => {
             <TextField label="Ville" source="address.city" />
             <TextField label="Longitude" source="location.coordinates[0]" />
             <TextField label="Latitude" source="location.coordinates[1]" />
+          </Tab>
+          <Tab label="Images">
+            <div>Logo</div>
+            <a href={imageToUrl(record?.logo)} target="_blank">
+              <img src={imageToUrl(record?.logo)} style={{ maxWidth: '100%' }} />
+            </a>
+            <hr />
+            <div>Image</div>
+            <a href={imageToUrl(record?.image)} target="_blank">
+              <img src={imageToUrl(record?.image)} style={{ maxWidth: '100%' }} />
+            </a>
           </Tab>
         </TabbedShowLayout>
       </ShowView>

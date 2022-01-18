@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { useMemo } from 'react';
 import { Create } from 'react-admin';
-import Form from './form';
+import Form, { transform } from './form';
 
 const PostCreate = ({ permissions, ...props }) => {
   const initialValues = useMemo(() => ({}), []);
 
   return (
-    <Create {...props}>
+    <Create {...props} transform={transform}>
       <Form
         validate={(values) => {
           const errors = {};

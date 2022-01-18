@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TopToolbar, Edit, CloneButton, ShowButton } from 'react-admin';
-import Form from './form';
+import Form, { transform } from './form';
 
 const EditActions = ({ basePath, data, hasShow }) => (
   <TopToolbar>
@@ -15,7 +15,7 @@ const EtablishmentTitle = ({ record }) => {
 
 const EtablishmentEdit = ({ ...props }) => {
   return (
-    <Edit title={<EtablishmentTitle />} actions={<EditActions />} {...props}>
+    <Edit transform={transform} title={<EtablishmentTitle />} actions={<EditActions />} {...props}>
       <Form warnWhenUnsavedChanges />
     </Edit>
   );

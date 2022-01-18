@@ -12,7 +12,6 @@ const useClasses = makeStyles({
 
 export const UserCard = ({ id, picture, firstName, lastName }) => {
   const classes = useClasses();
-  if (!id) return null;
   return (
     <>
       {picture && <Avatar className={classes.avatar} alt="" src={picture} />}
