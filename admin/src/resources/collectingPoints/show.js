@@ -10,7 +10,7 @@ import {
   TextField,
   useShowController,
 } from 'react-admin';
-import { Chip } from '@material-ui/core';
+import Chip from '@material-ui/core/Chip';
 
 import articles from './articles';
 
