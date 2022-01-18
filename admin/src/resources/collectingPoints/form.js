@@ -9,9 +9,12 @@ import {
   SelectInput,
   ArrayInput,
   SimpleFormIterator,
+  FileInput,
+  FileField,
 } from 'react-admin';
 import { Box } from '@material-ui/core';
 import articles from './articles';
+import { getImageValue } from '../../utils';
 
 const SanitizedBox = ({ fullWidth, basePath, ...props }) => <Box {...props} />;
 
@@ -20,6 +23,9 @@ const Form = ({ ...props }) => (
     <SanitizedBox display="flex" flexDirection="column" width="100%" justifyContent="space-between" fullWidth>
       <TextInput disabled source="id" />
       <TextInput label="Label" source="label" validate={required()} />
+      <FileInput source="image" label="image" accept="image/*">
+        <FileField source="src" title="image" target="_blank" />
+      </FileInput>
       <SelectInput label="Article" source="article" choices={articles} />
       <TextInput label="Image" source="image" />
       <TextInput label="Success Label" source="successLabel" validate={required()} />
@@ -45,5 +51,10 @@ const Form = ({ ...props }) => (
     </SanitizedBox>
   </SimpleForm>
 );
+
+export const transform = async ({ image, ...data }) => ({
+  ...data,
+  image: await getImageValue(image),
+});
 
 export default Form;

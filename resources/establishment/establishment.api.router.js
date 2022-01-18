@@ -2,26 +2,18 @@ const express = require('express');
 const router = express.Router();
 const { Establishment } = require('./establishment.model');
 const controllerGenerator = require('../../utils/reactAdmin');
-const uuid = require('uuid').v4;
-const cloudinary = require('cloudinary').v2;
-
-const upload = async (base64, type) =>
-  new Promise((resolve, reject) =>
-    cloudinary.uploader.upload(
-      `data:${type};base64,${base64}`,
-      {
-        tags: 'basic_sample',
-        public_id: uuid(),
-      },
-      (err, image) => (err ? reject(err) : resolve(image.secure_url.split('/').slice(-1)))
-    )
-  );
+const upload = require('../../utils/upload');
 
 const transformer = async ({ image, logo, ...dataToWrite }) => {
+  const [imageValue, logoValue] = await Promise.all([
+    typeof image !== 'string' ? await upload(image) : image,
+    typeof logo !== 'string' ? await upload(logo) : logo,
+  ]);
+
   const data = {
     ...dataToWrite,
-    image: typeof image !== 'string' ? await upload(image) : image,
-    logo: typeof logo !== 'string' ? await upload(logo) : logo,
+    image: imageValue,
+    logo: logoValue,
   };
 
   console.log(data);

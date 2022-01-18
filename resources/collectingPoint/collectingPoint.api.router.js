@@ -3,6 +3,7 @@ const router = express.Router();
 const { CollectingPoint } = require('./collectingPoint.model');
 const { Establishment } = require('../establishment/establishment.model');
 const controllerGenarator = require('../../utils/reactAdmin');
+const upload = require('../../utils/upload');
 
 // Deconstruction to avoid side effect and able to use Object.assign
 const transformer = async ({ _id, createdAt, updatedAt, location, types, rewards, __v, ...dataToWrite }) => {
@@ -11,6 +12,9 @@ const transformer = async ({ _id, createdAt, updatedAt, location, types, rewards
     Object.assign(dataToWrite, { location, types });
   }
 
+  if (typeof dataToWrite.image !== 'string') {
+    Object.assign(dataToWrite, { image: await upload(dataToWrite.image) });
+  }
   return dataToWrite;
 };
 

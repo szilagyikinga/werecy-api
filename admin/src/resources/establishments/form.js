@@ -12,6 +12,7 @@ import {
   required,
 } from 'react-admin';
 import types from './types';
+import { getImageValue } from '../../utils';
 
 const SanitizedBox = ({ fullWidth, basePath, ...props }) => <Box {...props} />;
 
@@ -36,28 +37,6 @@ const Form = ({ ...props }) => (
     </SanitizedBox>
   </SimpleForm>
 );
-
-// https://marmelab.com/react-admin/DataProviders.html#extending-a-data-provider-example-of-file-upload
-const convertFileToBase64 = (file) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-
-    reader.readAsDataURL(file.rawFile);
-  });
-
-const getImageValue = async (field) => {
-  if (!(field?.rawFile instanceof File)) return field;
-  console.log(field);
-  const base64 = await convertFileToBase64(field);
-
-  return {
-    base64,
-    name: field.rawFile.path,
-    type: field.rawFile.type,
-  };
-};
 
 export const transform = async ({ location, image, logo, ...data }) => ({
   ...data,
