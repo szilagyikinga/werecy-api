@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BooleanField,
-  FileField,
   FunctionField,
   ShowContextProvider,
   ShowView,

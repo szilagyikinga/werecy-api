@@ -5,20 +5,15 @@ import {
   Datagrid,
   DateField,
   FunctionField,
-  TextField,
   List,
   ChipField,
-  SearchInput,
   ReferenceInput,
   AutocompleteInput,
-  NullableBooleanInput,
   SelectInput,
   ReferenceField,
 } from 'react-admin';
-import UserField, { UserCard } from '../users/userField';
+import UserField from '../users/userField';
 import articles from '../collectingPoints/articles';
-
-import { Card as MuiCard, CardContent, withStyles } from '@material-ui/core';
 
 const statuses = [
   { name: 'En attente', id: 'pending' },
