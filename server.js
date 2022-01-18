@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const config = require('./config');
+const { admin, superAdmin, authenticate } = require('./utils/admin');
 const db = require('./utils/db');
 const collectingPointAppRouter = require('./resources/collectingPoint/collectingPoint.app.router');
 const bannerAppRouter = require('./resources/banner/banner.app.router');
@@ -13,6 +14,7 @@ const establishmentApiRouter = require('./resources/establishment/establishment.
 const collectingPointApiRouter = require('./resources/collectingPoint/collectingPoint.api.router');
 const userApiRouter = require('./resources/user/user.api.router');
 const collectingApiRouter = require('./resources/collecting/collecting.api.router');
+const adminApiRouter = require('./resources/admin/admin.api.router');
 const auth = require('./utils/auth');
 
 const app = express();
@@ -30,10 +32,12 @@ app.use('/api/collecting', auth.protect, collectingAppRouter);
 app.use('/api/banner', bannerAppRouter);
 
 // REST routes for admin
-app.use('/api/establishments', establishmentApiRouter);
-app.use('/api/collectingPoints', collectingPointApiRouter);
-app.use('/api/users', userApiRouter);
-app.use('/api/collectings', collectingApiRouter);
+app.use('/api/establishments', admin, establishmentApiRouter);
+app.use('/api/collectingPoints', admin, collectingPointApiRouter);
+app.use('/api/users', admin, userApiRouter);
+app.use('/api/collectings', admin, collectingApiRouter);
+app.use('/api/authenticate', authenticate);
+app.use('/api/admins', admin, superAdmin, adminApiRouter);
 
 const start = async () => {
   try {
