@@ -19,15 +19,15 @@ const Form = ({ ...props }) => (
   <SimpleForm {...props}>
     <SanitizedBox display="flex" flexDirection="column" width="100%" justifyContent="space-between" fullWidth>
       <TextInput disabled source="id" />
-      <TextInput label="Label" source="label" validate={required()} resettable />
+      <TextInput label="Label" source="label" validate={required()} />
       <SelectInput label="Article" source="article" choices={articles} />
-      <TextInput label="Image" source="image" resettable />
-      <TextInput label="Success Label" source="successLabel" validate={required()} resettable />
-      <TextInput label="Récompense" source="reward" validate={required()} resettable />
+      <TextInput label="Image" source="image" />
+      <TextInput label="Success Label" source="successLabel" validate={required()} />
+      <TextInput label="Récompense" source="reward" validate={required()} />
       <DateInput label="Date de début" source="startDate" options={{ locale: 'fr' }} />
       <DateInput label="Date de fin" source="endDate" options={{ locale: 'fr' }} />
-      <TextInput label="Succès quand" source="successWhen" resettable />
-      <TextInput label="Message de partage" source="shareMessage" resettable />
+      <TextInput label="Succès quand" source="successWhen" />
+      <TextInput label="Message de partage" source="shareMessage" />
       <ReferenceInput label="Etablissement" validate={required()} source="establishment" reference="establishments">
         <AutocompleteInput
           options={{ fullWidth: true }}
@@ -38,8 +38,8 @@ const Form = ({ ...props }) => (
       <TextInput label="Note" source="rewards.note" />
       <ArrayInput label="Éléments" source="rewards.items">
         <SimpleFormIterator>
-          <TextInput label="Entreprise" source="company" resettable validate={required()} fullWidth />
-          <TextInput label="Récompense" source="reward" resettable validate={required()} fullWidth />
+          <TextInput label="Entreprise" source="company" validate={required()} fullWidth />
+          <TextInput label="Récompense" source="reward" validate={required()} fullWidth />
         </SimpleFormIterator>
       </ArrayInput>
     </SanitizedBox>
