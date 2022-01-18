@@ -43,7 +43,15 @@ const authProvider = {
     }
   },
   // authorization
-  getPermissions: (params) => Promise.resolve(),
+  getPermissions: () => {
+    try {
+      const { superAdmin } = JSON.parse(localStorage.getItem('auth'));
+      console.log({ superAdmin });
+      return superAdmin ? Promise.resolve('admin') : Promise.resolve('');
+    } catch (err) {
+      Promise.reject();
+    }
+  },
 };
 
 export default authProvider;

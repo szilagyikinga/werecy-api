@@ -5,6 +5,7 @@ import jsonServerProvider from 'ra-data-json-server';
 import establishment from './resources/establishments';
 import collectingPoints from './resources/collectingPoints';
 import users from './resources/users';
+import admins from './resources/admins';
 import collecting from './resources/collecting';
 import authProvider from './authProvider';
 
@@ -23,10 +24,13 @@ console.log({ ...authProvider });
 
 const App = () => (
   <Admin dataProvider={dataProvider} authProvider={authProvider}>
-    <Resource name="establishments" {...establishment} />
-    <Resource name="collectingPoints" {...collectingPoints} />
-    <Resource name="users" {...users} />
-    <Resource name="collectings" {...collecting} />
+    {(permissions) => [
+      <Resource name="establishments" {...establishment} />,
+      <Resource name="collectingPoints" {...collectingPoints} />,
+      <Resource name="users" {...users} />,
+      <Resource name="collectings" {...collecting} />,
+      permissions === 'admin' ? <Resource name="admins" {...admins} /> : null,
+    ]}
   </Admin>
 );
 

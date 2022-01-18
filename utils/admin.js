@@ -33,6 +33,14 @@ const admin = async (req, res, next) => {
   next();
 };
 
+const superAdmin = async (req, res, next) => {
+  const admin = await Admin.findById(req.token.admin);
+  if (!admin.superAdmin) {
+    return res.status(403).end();
+  }
+  return next();
+};
+
 router.post('', async (req, res, next) => {
   try {
     const { username, password } = req.body;
@@ -53,7 +61,7 @@ router.post('', async (req, res, next) => {
       token: token._id,
       id: token._id,
       fullName: admin.name,
-      ...admin,
+      superAdmin: admin.superAdmin,
     });
   } catch (err) {
     console.err('Authentication failed', err);
@@ -61,4 +69,4 @@ router.post('', async (req, res, next) => {
   }
 });
 
-module.exports = { admin, authenticate: router };
+module.exports = { admin, superAdmin, authenticate: router };

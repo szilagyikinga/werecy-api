@@ -30,7 +30,7 @@ const EtablishmentShow = (props) => {
             <TextField source="id" />
             <TextField label="Nom" source="name" />
             <TextField label="Code" source="code" />
-            <BooleanField label="Prochainement ?" source="isUpComing" />
+            <BooleanField defaultValue={false} label="Prochainement ?" source="isUpComing" />
             <FunctionField
               label="Types"
               render={(record) => record.types.map((type) => <Chip label={types.find(({ id }) => id === type).name} />)}
