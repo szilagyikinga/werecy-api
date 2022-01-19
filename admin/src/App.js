@@ -20,8 +20,6 @@ const httpClient = (url, options = {}) => {
 
 const dataProvider = jsonServerProvider('http://localhost:8080/api', httpClient);
 
-console.log({ ...authProvider });
-
 const App = () => (
   <Admin dataProvider={dataProvider} authProvider={authProvider}>
     {(permissions) => [

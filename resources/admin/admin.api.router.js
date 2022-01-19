@@ -10,7 +10,6 @@ const transformer = async ({ password, ...dataToWrite }) => {
     Object.assign(dataToWrite, { hash: bcrypt.hashSync(password, ROUND_SALT) });
   }
 
-  console.log({ dataToWrite, password });
   return dataToWrite;
 };
 

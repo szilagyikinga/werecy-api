@@ -10,7 +10,6 @@ const convertFileToBase64 = (file) =>
 
 export const getImageValue = async (field) => {
   if (!(field?.rawFile instanceof File)) return field;
-  console.log(field);
   const base64 = await convertFileToBase64(field);
 
   return {

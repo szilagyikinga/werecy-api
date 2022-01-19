@@ -19,6 +19,7 @@ const EtablishmentList = (props) => {
     <List {...props} filters={postFilter} sort={{ field: 'created_at', order: 'DESC' }} bulkActionButtons={false}>
       <Datagrid optimized>
         <TextField source="name" label="Nom" />
+        <TextField source="code" label="Code" />
         <DateField source="createdAt" sortByOrder="DESC" label="Créé le" locales="fr-FR" />
         <FunctionField label="Adresse" render={renderAdressInList} />
         <EditButton />

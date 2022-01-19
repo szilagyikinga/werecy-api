@@ -43,7 +43,7 @@ const CollectingPointShow = (props) => {
         </ReferenceField>
         <TextField label="Récompense" source="rewards.title" />
         <TextField label="Note" source="rewards.note" />
-        <ArrayField label="Récompoenses" source="rewards.items">
+        <ArrayField label="Récompenses" source="rewards.items">
           <Datagrid>
             <TextField label="Entreprise" source="company" fullWidth />
             <TextField label="Récompense" source="reward" fullWidth />

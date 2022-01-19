@@ -13,7 +13,7 @@ const transformer = async ({ _id, createdAt, updatedAt, location, types, rewards
   }
 
   if (typeof dataToWrite.image !== 'string') {
-    Object.assign(dataToWrite, { image: await upload(dataToWrite.image) });
+    Object.assign(dataToWrite, { image: await upload(dataToWrite.image.base64) });
   }
   return dataToWrite;
 };

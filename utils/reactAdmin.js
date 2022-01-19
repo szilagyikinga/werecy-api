@@ -1,16 +1,18 @@
 const ObjectId = require('mongoose').Types.ObjectId;
 const { ObjectID } = require('mongodb');
 
+/**
+ * Get filters from request query
+ *
+ * @param {object} query request query
+ * @returns {object} filter to apply
+ */
 const getFilters = (query) => {
-  const { id, q, ...filters } = query;
+  const { q, ...filters } = query;
   const queryFilters = {};
 
-  if (id) {
-    Object.assign(queryFilters, {
-      _id: Array.isArray(id) ? { $in: id } : id,
-    });
-  }
-
+  // if a "q" params is present, search it via text index
+  // https://docs.mongodb.com/manual/reference/operator/query/text/
   if (q) {
     Object.assign(queryFilters, {
       $text: { $search: q },
@@ -19,7 +21,9 @@ const getFilters = (query) => {
 
   if (filters) {
     Object.keys(filters)
+      // remove _xxxx filters (used for sort and pagination)
       .filter((key) => key[0] !== '_')
+      // Converting filter
       .map((key) => {
         const filterValue = filters[key];
 

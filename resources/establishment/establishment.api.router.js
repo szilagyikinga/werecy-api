@@ -6,8 +6,8 @@ const upload = require('../../utils/upload');
 
 const transformer = async ({ image, logo, ...dataToWrite }) => {
   const [imageValue, logoValue] = await Promise.all([
-    typeof image !== 'string' ? await upload(image) : image,
-    typeof logo !== 'string' ? await upload(logo) : logo,
+    typeof image !== 'string' ? await upload(image.base64) : image,
+    typeof logo !== 'string' ? await upload(logo.base64) : logo,
   ]);
 
   const data = {
@@ -16,7 +16,6 @@ const transformer = async ({ image, logo, ...dataToWrite }) => {
     logo: logoValue,
   };
 
-  console.log(data);
   return data;
 };
 
