@@ -18,7 +18,8 @@ const httpClient = (url, options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = jsonServerProvider('http://localhost:8080/api', httpClient);
+const apiUrl = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:8080/api';
+const dataProvider = jsonServerProvider(apiUrl, httpClient);
 
 const App = () => (
   <Admin dataProvider={dataProvider} authProvider={authProvider}>
