@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path');
 const bodyParser = require('body-parser');
 
 const config = require('./config');
@@ -23,6 +24,8 @@ app.disable('x-powered-by');
 app.use(cors({ exposedHeaders: ['Content-Length', 'X-Total-Count'] }));
 app.use(bodyParser.json({ limit: '15mb' })); // Upload size
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, './admin/build')));
+
 app.use(morgan('dev'));
 
 // Routes for mobile app
