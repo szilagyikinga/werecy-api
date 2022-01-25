@@ -64,7 +64,7 @@ router.post('', async (req, res, next) => {
       superAdmin: admin.superAdmin,
     });
   } catch (err) {
-    console.err('Authentication failed', err);
+    console.error('Authentication failed', err);
     return res.status(401).end();
   }
 });
