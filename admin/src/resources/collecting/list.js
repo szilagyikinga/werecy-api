@@ -22,12 +22,12 @@ const statuses = [
 ];
 
 const filters = [
-  <ReferenceInput label="Etablissement" source="establishment" reference="establishments">
+  <ReferenceInput label="Etablissement" source="establishment" reference="establishments" perPage={100}>
     <AutocompleteInput
       optionText={(record) => (record?.id ? `${record?.name ?? '??'} (${record?.code ?? '??'})` : <em>Tous</em>)}
     />
   </ReferenceInput>,
-  <ReferenceInput label="Utilisateur" source="user" reference="users">
+  <ReferenceInput label="Utilisateur" source="user" reference="users" perPage={1000}>
     <AutocompleteInput
       optionText={(record) =>
         record?.id ? `${record?.firstName ?? '??'} ${record?.lastName ?? '??'} (${record?.email})` : <em>Tous</em>

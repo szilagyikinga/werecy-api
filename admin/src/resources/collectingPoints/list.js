@@ -16,7 +16,7 @@ import {
 
 const filters = [
   <SearchInput source="q" alwaysOn />,
-  <ReferenceInput label="Etablissement" source="establishment" reference="establishments">
+  <ReferenceInput label="Etablissement" source="establishment" reference="establishments" perPage={100}>
     <AutocompleteInput
       optionText={(record) => (record?.id ? `${record?.name ?? '??'} (${record?.code ?? '??'})` : <em>Tous</em>)}
     />
