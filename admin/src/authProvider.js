@@ -1,7 +1,9 @@
 const authProvider = {
   // authentication
   login: async ({ username, password }) => {
-    const request = new Request('http://localhost:8080/api/authenticate', {
+    const authUrl =
+      process.env.NODE_ENV === 'production' ? '/api/authenticate' : 'http://localhost:8080/api/authenticate';
+    const request = new Request(authUrl, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: new Headers({ 'Content-Type': 'application/json' }),
