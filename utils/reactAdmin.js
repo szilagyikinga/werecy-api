@@ -38,20 +38,22 @@ const getFilters = (query) => {
 
 const list = (Model) => async (req, res, next) => {
   try {
-    const { _end, _order, _sort, _start, id } = req.query;
+    const { _end, _order, _sort, _start } = req.query;
+
+    let sort = _sort ? _sort : 'createdAt';
 
     const filters = getFilters(req.query);
-    const [establishments, count] = await Promise.all([
+    const [entities, count] = await Promise.all([
       Model.find(filters)
         .limit(Number.parseInt(_end) - Number.parseInt(_start))
         .skip(Number.parseInt(_start))
-        .sort(`${_order === 'ASC' ? '-' : '+'}${_sort}`)
+        .sort([[sort, _order === 'ASC' ? -1 : 1]])
         .exec(),
       Model.countDocuments(filters),
     ]);
 
     res.header('X-Total-Count', count);
-    res.status(200).json(establishments);
+    res.status(200).json(entities);
     return next();
   } catch (err) {
     return next(err);

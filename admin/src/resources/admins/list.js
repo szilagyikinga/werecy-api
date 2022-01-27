@@ -4,7 +4,7 @@ import { ShowButton, Datagrid, DateField, List, TextField, BooleanField, EditBut
 
 const AdminList = (props) => {
   return (
-    <List {...props} sort={{ field: 'created_at', order: 'DESC' }} bulkActionButtons={false}>
+    <List {...props} sort={{ field: 'createdAt', order: 'DESC' }} bulkActionButtons={false}>
       <Datagrid optimized>
         <TextField label="Nom" source="name" />
         <TextField label="E-mail" source="email" />

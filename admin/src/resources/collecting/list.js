@@ -40,7 +40,7 @@ const filters = [
 
 const UserList = (props) => {
   return (
-    <List {...props} filters={filters} sort={{ field: 'created_at', order: 'DESC' }} bulkActionButtons={false}>
+    <List {...props} filters={filters} sort={{ field: 'createdAt', order: 'DESC' }} bulkActionButtons={false}>
       <Datagrid optimized>
         <FunctionField
           label="Article"

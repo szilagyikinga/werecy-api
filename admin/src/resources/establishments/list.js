@@ -16,7 +16,7 @@ const postFilter = [<SearchInput source="q" alwaysOn />];
 
 const EtablishmentList = (props) => {
   return (
-    <List {...props} filters={postFilter} sort={{ field: 'created_at', order: 'DESC' }} bulkActionButtons={false}>
+    <List {...props} filters={postFilter} sort={{ field: 'createdAt', order: 'DESC' }} bulkActionButtons={false}>
       <Datagrid optimized>
         <TextField source="name" label="Nom" />
         <TextField source="code" label="Code" />
