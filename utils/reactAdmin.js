@@ -28,7 +28,7 @@ const getFilters = (query) => {
         const filterValue = filters[key];
 
         Object.assign(queryFilters, {
-          [key]: Array.isArray(filterValue) ? { $in: filterValue } : filterValue,
+          [key === 'id' ? '_id' : key]: Array.isArray(filterValue) ? { $in: filterValue } : filterValue,
         });
       });
   }
@@ -38,7 +38,7 @@ const getFilters = (query) => {
 
 const list = (Model) => async (req, res, next) => {
   try {
-    const { _end, _order, _sort, _start } = req.query;
+    const { _end, _order, _sort, _start, id } = req.query;
 
     const filters = getFilters(req.query);
     const [establishments, count] = await Promise.all([
