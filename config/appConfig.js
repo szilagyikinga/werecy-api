@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
+
 const appConfig = {
   defaultGeoCordinates: {
     latitude: 43.288675,
