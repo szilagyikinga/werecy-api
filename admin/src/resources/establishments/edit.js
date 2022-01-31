@@ -3,10 +3,7 @@ import { TopToolbar, Edit, CloneButton, ShowButton } from 'react-admin';
 import Form, { transform } from './form';
 
 const EditActions = ({ basePath, data, hasShow }) => (
-  <TopToolbar>
-    <CloneButton className="button-clone" basePath={basePath} record={data} />
-    {hasShow && <ShowButton basePath={basePath} record={data} />}
-  </TopToolbar>
+  <TopToolbar>{hasShow && <ShowButton basePath={basePath} record={data} />}</TopToolbar>
 );
 
 const EtablishmentTitle = ({ record }) => {
