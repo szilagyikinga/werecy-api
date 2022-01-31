@@ -28,12 +28,14 @@ const Form = ({ ...props }) => (
       <TextInput label="Nom" source="name" validate={required()} />
       <TextInput label="Code" source="code" validate={required()} />
       <BooleanInput label="Prochainement ?" source="isUpComing" />
+      <BooleanInput label="Validation déclarative ?" source="declarativeValidation" />
       <CheckboxGroupInput source="types" choices={types} />
       <TextInput label="Rue" source="address.street" validate={required()} />
       <TextInput label="Code postal" source="address.zip" validate={required()} />
       <TextInput label="Ville" source="address.city" validate={required()} />
       <NumberInput label="Longitude" source="location.coordinates[0]" validate={required()} />
       <NumberInput label="Latitude" source="location.coordinates[1]" validate={required()} />
+      <TextInput label="Message de partage" source="shareMessage" />
     </SanitizedBox>
   </SimpleForm>
 );

@@ -41,28 +41,25 @@ const RewardsSchema = new mongoose.Schema({
 
 const CollectingPointSchema = new mongoose.Schema(
   {
-    image: {
-      type: String,
-      required: false,
+    establishment: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'establishment',
+      required: true,
     },
     article: {
       type: String,
       required: true,
       enum: [CAMERA, BATTERY, LEATHER, MOD, SMARTPHONE, TABLET, BULK, WETSUIT, JEAN, TONER],
     },
+    label: {
+      type: String,
+      required: true,
+    },
     successLabel: {
       type: String,
       required: true,
     },
     reward: {
-      type: String,
-      required: true,
-    },
-    rewards: {
-      type: RewardsSchema,
-      required: false,
-    },
-    label: {
       type: String,
       required: true,
     },
@@ -86,11 +83,15 @@ const CollectingPointSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    establishment: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'establishment',
-      required: true,
+    rewards: {
+      type: RewardsSchema,
+      required: false,
     },
+    image: {
+      type: String,
+      required: false,
+    },
+
     // copy of the establishment's location for faster sorting
     location: {
       type: establishmentModel.LocationSchema,
