@@ -40,10 +40,12 @@ const EstablishmentSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     code: {
       type: String,
       required: true,
+      unique: true,
     },
     types: {
       type: [String],

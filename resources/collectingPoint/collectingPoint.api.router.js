@@ -6,13 +6,13 @@ const controllerGenarator = require('../../utils/reactAdmin');
 const upload = require('../../utils/upload');
 
 // Deconstruction to avoid side effect and able to use Object.assign
-const transformer = async ({ _id, createdAt, updatedAt, location, types, rewards, __v, ...dataToWrite }) => {
+const transformer = async ({ _id, createdAt, updatedAt, location, types, __v, ...dataToWrite }) => {
   if (dataToWrite.establishment) {
     const { location, types } = await Establishment.findById(dataToWrite.establishment).exec();
     Object.assign(dataToWrite, { location, types });
   }
 
-  if (typeof dataToWrite.image !== 'string') {
+  if (dataToWrite.image && typeof dataToWrite.image !== 'string') {
     Object.assign(dataToWrite, { image: await upload(dataToWrite.image.base64) });
   }
   return dataToWrite;
