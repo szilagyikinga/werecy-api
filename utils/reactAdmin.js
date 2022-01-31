@@ -70,13 +70,15 @@ const get = (Model) => async (req, res, next) => {
   }
 };
 
-const update = (Model, transformer) => async (req, res, next) => {
+const update = (Model, transformer, onSuccess) => async (req, res, next) => {
   try {
     const dataToUpdate = transformer ? await transformer(req.body) : req.body;
-    await Model.findByIdAndUpdate(req.params.id, dataToUpdate).exec();
-    const item = await Model.findById(req.params.id).exec();
+    const initialItem = await Model.findByIdAndUpdate(req.params.id, dataToUpdate).exec();
+    const updatedItem = await Model.findById(req.params.id).exec();
 
-    res.status(200).json(item);
+    onSuccess && onSuccess(initialItem, updatedItem);
+
+    res.status(200).json(updatedItem);
     return next();
   } catch (err) {
     return next(err);
@@ -95,9 +97,9 @@ const create = (Model, transformer) => async (req, res, next) => {
   }
 };
 
-module.exports = (Model, transformer) => ({
+module.exports = (Model, transformer, onUpdateSuccess) => ({
   list: list(Model),
   get: get(Model),
-  update: update(Model, transformer),
+  update: update(Model, transformer, onUpdateSuccess),
   create: create(Model, transformer),
 });
