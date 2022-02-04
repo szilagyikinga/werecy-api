@@ -12,7 +12,9 @@ import {
   ReferenceInput,
   AutocompleteInput,
   FunctionField,
+  SelectInput,
 } from 'react-admin';
+import articles from './articles';
 
 const filters = [
   <SearchInput source="q" alwaysOn />,
@@ -21,6 +23,7 @@ const filters = [
       optionText={(record) => (record?.id ? `${record?.name ?? '??'} (${record?.code ?? '??'})` : <em>Tous</em>)}
     />
   </ReferenceInput>,
+  <SelectInput source="article" choices={articles} label="Article" />,
 ];
 
 const CollectingPointList = (props) => {
@@ -28,6 +31,7 @@ const CollectingPointList = (props) => {
     <List {...props} filters={filters} sort={{ field: 'createdAt', order: 'DESC' }} bulkActionButtons={false}>
       <Datagrid optimized>
         <TextField source="label" label="Label" />
+        <TextField source="article" label="Article" />
         <ReferenceField label="Etablissement" source="establishment" reference="establishments">
           <FunctionField source="name" render={(record) => `${record?.name ?? '??'} (${record?.code ?? '??'})`} />
         </ReferenceField>

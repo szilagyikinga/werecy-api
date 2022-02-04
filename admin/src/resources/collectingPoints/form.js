@@ -35,7 +35,7 @@ const Form = ({ ...props }) => (
       </ReferenceInput>
       <SelectInput label="Article" source="article" choices={articles} validate={required()} />
       <TextInput label="Label" source="label" validate={required()} />
-      <TextInput label="Success Label" source="successLabel" validate={required()} />
+      <TextInput label="Label de succès" source="successLabel" validate={required()} />
       <TextInput label="Récompense" source="reward" validate={required()} />
       <DateInput label="Date de début" source="startDate" options={{ locale: 'fr' }} />
       <DateInput label="Date de fin" source="endDate" options={{ locale: 'fr' }} />
