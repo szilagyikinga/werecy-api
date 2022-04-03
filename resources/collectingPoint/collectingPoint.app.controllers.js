@@ -21,7 +21,12 @@ const getMany = (req, res) => {
   const limit = parseInt(limitParam);
   const skip = limit * parseInt(page);
 
-  const query = !article ? {} : { article };
+  // check api version
+  const defaultArticleFilter = req.headers.version === 'v2' ? {} : { article: { $in: model.v1Articles } };
+
+  console.log({ defaultArticleFilter });
+
+  const query = !article ? defaultArticleFilter : { article };
   if (types && types.length > 0) {
     query.types = { $in: types };
   }

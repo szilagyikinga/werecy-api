@@ -2,16 +2,35 @@ const mongoose = require('mongoose');
 
 const establishmentModel = require('../establishment/establishment.model');
 
+// v1 articles
 const WETSUIT = 'wetsuit';
 const TONER = 'toner';
-const CAMERA = 'camera';
 const SMARTPHONE = 'smartphone';
-const TABLET = 'tablet';
 const BATTERY = 'battery';
 const MOD = 'mod';
-const LEATHER = 'leather';
 const BULK = 'bulk';
 const JEAN = 'jean';
+// v2 extra articles
+const TENNIS_BALL = 'tennis_ball';
+const CLIMBING_ROPES = 'climbing_ropes';
+const HUNTING_CARTRIDGES = 'hunting_cartridges';
+const BICYCLE_BATTERY = 'bicycle_battery';
+const INNER_TUBE = 'inner_tube';
+const BOOTS = 'boots';
+const SWIMSUIT = 'swimsuit';
+const PUFF = 'puff';
+
+const v1Articles = [WETSUIT, TONER, SMARTPHONE, BATTERY, MOD, BULK, JEAN];
+const v2Articles = [
+  TENNIS_BALL,
+  CLIMBING_ROPES,
+  HUNTING_CARTRIDGES,
+  BICYCLE_BATTERY,
+  INNER_TUBE,
+  BOOTS,
+  SWIMSUIT,
+  PUFF,
+];
 
 const RewardItemSchema = new mongoose.Schema({
   company: {
@@ -49,7 +68,23 @@ const CollectingPointSchema = new mongoose.Schema(
     article: {
       type: String,
       required: true,
-      enum: [CAMERA, BATTERY, LEATHER, MOD, SMARTPHONE, TABLET, BULK, WETSUIT, JEAN, TONER],
+      enum: [
+        BATTERY,
+        MOD,
+        SMARTPHONE,
+        BULK,
+        WETSUIT,
+        JEAN,
+        TONER,
+        TENNIS_BALL,
+        CLIMBING_ROPES,
+        HUNTING_CARTRIDGES,
+        BICYCLE_BATTERY,
+        INNER_TUBE,
+        BOOTS,
+        SWIMSUIT,
+        PUFF,
+      ],
     },
     label: {
       type: String,
@@ -131,14 +166,21 @@ const CollectingPoint = mongoose.model('collectingPoint', CollectingPointSchema)
 module.exports = {
   CollectingPoint,
   RewardsSchema,
-  CAMERA,
   BATTERY,
-  LEATHER,
   MOD,
   SMARTPHONE,
-  TABLET,
   BULK,
   WETSUIT,
   JEAN,
   TONER,
+  TENNIS_BALL,
+  CLIMBING_ROPES,
+  HUNTING_CARTRIDGES,
+  BICYCLE_BATTERY,
+  INNER_TUBE,
+  BOOTS,
+  SWIMSUIT,
+  PUFF,
+  v1Articles,
+  v2Articles,
 };

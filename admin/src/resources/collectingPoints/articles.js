@@ -1,14 +1,19 @@
 const articles = [
   { name: 'wetsuit', id: 'wetsuit' },
   { name: 'toner', id: 'toner' },
-  { name: 'camera', id: 'camera' },
   { name: 'smartphone', id: 'smartphone' },
-  { name: 'tablet', id: 'tablet' },
   { name: 'battery', id: 'battery' },
   { name: 'mod', id: 'mod' },
-  { name: 'leather', id: 'leather' },
   { name: 'bulk', id: 'bulk' },
   { name: 'jean', id: 'jean' },
+  { name: 'tennis_ball', id: 'tennis_ball' },
+  { name: 'climbing_ropes', id: 'climbing_ropes' },
+  { name: 'hunting_cartridges', id: 'hunting_cartridges' },
+  { name: 'bicycle_battery', id: 'bicycle_battery' },
+  { name: 'inner_tube', id: 'inner_tube' },
+  { name: 'boots', id: 'boots' },
+  { name: 'swimsuit', id: 'swimsuit' },
+  { name: 'puff', id: 'puff' },
 ];
 
 export default articles;
